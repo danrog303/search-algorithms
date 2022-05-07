@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
-using SearchAlgorithms.BaseInterfaceClass;
 
-namespace SearchAlgorithms.TestAlgorithm
+namespace SearchAlgorithms.Core.Algorithms
 {
-    public class FirstAlgorithm : SearchAlgorithmInterface
+    public class TestSearch : ISearchAlgorithm
     {
-        public FirstAlgorithm(int r)
+        public TestSearch(int random)
         {
-            random = r;
+            this.random = random;
         }
 
         private int random;
 
-        public string name()
+        public string Name()
         {
-            return "first";
+            return "random-time testing algorithm";
         }
-        public List<int> search(in string lookingString,in string longString)
+        public List<int> Search(in string lookingString,in string longString)
         {
 
             Thread.Sleep(random%100+1);
