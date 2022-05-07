@@ -1,21 +1,18 @@
-﻿using SearchAlgorithms.BaseInterfaceClass;
-using SearchAlgorithms.TestAlgorithm;
+﻿using SearchAlgorithms.Core.Algorithms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Management;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace Interface
+namespace SearchAlgorithms.Interface
 {
     public partial class MainForm : Form
     {
@@ -123,12 +120,12 @@ namespace Interface
 
             tasksList = new List<Task<Tuple<string, long>>>();
 
-            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new FirstAlgorithm(random.Next())); }));
-            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new FirstAlgorithm(random.Next())); }));
-            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new FirstAlgorithm(random.Next())); }));
-            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new FirstAlgorithm(random.Next())); }));
-            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new FirstAlgorithm(random.Next())); }));
-            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new FirstAlgorithm(random.Next())); }));
+            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new TestSearch(random.Next())); }));
+            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new TestSearch(random.Next())); }));
+            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new TestSearch(random.Next())); }));
+            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new TestSearch(random.Next())); }));
+            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new TestSearch(random.Next())); }));
+            tasksList.Add(new Task<Tuple<string, long>>(() => { return Serch(() => new TestSearch(random.Next())); }));
 
             foreach (Task<Tuple<string, long>> i in tasksList)
             {
@@ -169,11 +166,11 @@ namespace Interface
 
         }
 
-        private Tuple<string, long> Serch(Func<SearchAlgorithmInterface> algo)
+        private Tuple<string, long> Serch(Func<ISearchAlgorithm> algo)
         {
             Stopwatch sw = Stopwatch.StartNew();
-            SearchAlgorithmInterface fa = algo();
-            List<int> rl = fa.search(lookingString, longString);
+            ISearchAlgorithm fa = algo();
+            List<int> rl = fa.Search(lookingString, longString);
             long swResult = sw.ElapsedMilliseconds;
             sw.Stop();
 
@@ -181,7 +178,7 @@ namespace Interface
             {
                 resultList = rl;
             }        
-            return new Tuple<string,long>(fa.name(),swResult);
+            return new Tuple<string,long>(fa.Name(),swResult);
         }
 
         private async void markSubString()

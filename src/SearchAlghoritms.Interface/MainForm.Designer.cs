@@ -1,5 +1,5 @@
 ﻿
-namespace Interface
+namespace SearchAlgorithms.Interface
 {
     partial class MainForm
     {
@@ -63,11 +63,12 @@ namespace Interface
             // 
             // toolStrip1
             // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonOpen});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1067, 27);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -77,7 +78,7 @@ namespace Interface
             this.toolStripButtonOpen.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOpen.Image")));
             this.toolStripButtonOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonOpen.Name = "toolStripButtonOpen";
-            this.toolStripButtonOpen.Size = new System.Drawing.Size(49, 22);
+            this.toolStripButtonOpen.Size = new System.Drawing.Size(61, 24);
             this.toolStripButtonOpen.Text = "Otwórz";
             this.toolStripButtonOpen.Click += new System.EventHandler(this.toolStripButtonOpen_Click);
             // 
@@ -90,28 +91,31 @@ namespace Interface
             this.tableLayoutPanel1.Controls.Add(this.richTextBoxLongString, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tabControl, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 31);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 401);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1067, 494);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // progressBar
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar.Location = new System.Drawing.Point(261, 3);
+            this.progressBar.Location = new System.Drawing.Point(348, 4);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(536, 29);
+            this.progressBar.Size = new System.Drawing.Size(715, 35);
             this.progressBar.TabIndex = 3;
             // 
             // richTextBoxLongString
             // 
             this.richTextBoxLongString.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxLongString.Location = new System.Drawing.Point(3, 38);
+            this.richTextBoxLongString.Location = new System.Drawing.Point(4, 47);
+            this.richTextBoxLongString.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxLongString.Name = "richTextBoxLongString";
-            this.richTextBoxLongString.Size = new System.Drawing.Size(252, 360);
+            this.richTextBoxLongString.Size = new System.Drawing.Size(336, 443);
             this.richTextBoxLongString.TabIndex = 2;
             this.richTextBoxLongString.Text = "";
             // 
@@ -119,24 +123,26 @@ namespace Interface
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.tableLayoutPanel2.Controls.Add(this.buttonSearch, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.richTextBoxLookingString, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(252, 29);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(336, 35);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // buttonSearch
             // 
             this.buttonSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSearch.Location = new System.Drawing.Point(170, 3);
-            this.buttonSearch.MinimumSize = new System.Drawing.Size(83, 23);
+            this.buttonSearch.Location = new System.Drawing.Point(227, 4);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSearch.MinimumSize = new System.Drawing.Size(111, 28);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(83, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(111, 28);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.TabStop = false;
             this.buttonSearch.Text = "Search";
@@ -146,10 +152,11 @@ namespace Interface
             // richTextBoxLookingString
             // 
             this.richTextBoxLookingString.Dock = System.Windows.Forms.DockStyle.Left;
-            this.richTextBoxLookingString.Location = new System.Drawing.Point(3, 3);
+            this.richTextBoxLookingString.Location = new System.Drawing.Point(4, 4);
+            this.richTextBoxLookingString.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxLookingString.Multiline = false;
             this.richTextBoxLookingString.Name = "richTextBoxLookingString";
-            this.richTextBoxLookingString.Size = new System.Drawing.Size(142, 23);
+            this.richTextBoxLookingString.Size = new System.Drawing.Size(188, 28);
             this.richTextBoxLookingString.TabIndex = 2;
             this.richTextBoxLookingString.Text = "";
             this.richTextBoxLookingString.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBoxLookingString_KeyUp);
@@ -159,19 +166,21 @@ namespace Interface
             this.tabControl.Controls.Add(this.tabPageTime);
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
-            this.tabControl.Location = new System.Drawing.Point(261, 38);
+            this.tabControl.Location = new System.Drawing.Point(348, 47);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(536, 360);
+            this.tabControl.Size = new System.Drawing.Size(715, 443);
             this.tabControl.TabIndex = 4;
             // 
             // tabPageTime
             // 
             this.tabPageTime.Controls.Add(this.chart);
-            this.tabPageTime.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTime.Location = new System.Drawing.Point(4, 25);
+            this.tabPageTime.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageTime.Name = "tabPageTime";
-            this.tabPageTime.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTime.Size = new System.Drawing.Size(528, 334);
+            this.tabPageTime.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageTime.Size = new System.Drawing.Size(707, 414);
             this.tabPageTime.TabIndex = 0;
             this.tabPageTime.Text = "Time";
             this.tabPageTime.UseVisualStyleBackColor = true;
@@ -183,42 +192,47 @@ namespace Interface
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
             this.chart.Legends.Add(legend1);
-            this.chart.Location = new System.Drawing.Point(3, 3);
+            this.chart.Location = new System.Drawing.Point(4, 4);
+            this.chart.Margin = new System.Windows.Forms.Padding(4);
             this.chart.Name = "chart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(522, 328);
+            this.chart.Size = new System.Drawing.Size(699, 406);
             this.chart.TabIndex = 3;
             this.chart.TabStop = false;
             this.chart.Text = "chart1";
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(528, 334);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(707, 414);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(528, 334);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage3.Size = new System.Drawing.Size(707, 414);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 429);
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 533);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1067, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -236,13 +250,14 @@ namespace Interface
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(800, 451);
+            this.ClientSize = new System.Drawing.Size(1067, 555);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Porównywarka Algorytmów";
             this.toolStrip1.ResumeLayout(false);

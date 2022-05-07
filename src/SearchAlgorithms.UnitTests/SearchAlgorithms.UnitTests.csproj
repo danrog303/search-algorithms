@@ -8,8 +8,8 @@
     <ProjectGuid>{432361CD-B0B4-4F24-A015-2E1D4FC39699}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnitTest</RootNamespace>
-    <AssemblyName>UnitTest</AssemblyName>
+    <RootNamespace>SearchAlgorithms.UnitTests</RootNamespace>
+    <AssemblyName>SearchAlgorithms.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,21 +50,39 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest.cs" />
+    <Compile Include="Core\Algorithms\BuiltInSearch_Test.cs" />
+    <Compile Include="Core\Algorithms\TestSearch_Test.cs" />
+    <Compile Include="Core\Testing\Validators\SearchAlgorithmValidator_Test.cs" />
+    <Compile Include="Core\Utils\PrimeNumberUtils_Test.cs" />
+    <Compile Include="Example_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Interface\Interface.csproj">
+    <ProjectReference Include="..\SearchAlghoritms.Interface\SearchAlghoritms.Interface.csproj">
       <Project>{0cfd55e8-e3f8-4081-b270-3ceb8ba945d2}</Project>
-      <Name>Interface</Name>
+      <Name>SearchAlghoritms.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SearchAlgorithms\SearchAlgorithms.csproj">
+    <ProjectReference Include="..\SearchAlgorithms.Core\SearchAlgorithms.Core.csproj">
       <Project>{2f3f70e9-7c87-431f-8511-9d891a2c49d2}</Project>
-      <Name>SearchAlgorithms</Name>
+      <Name>SearchAlgorithms.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Testing\Timers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
