@@ -1,0 +1,57 @@
+name: build and test
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+    - name: Setup VSTest Path
+      uses: darenm/Setup-VSTest@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      
+    - name: ls
+      run: ls
+
+    - name: Navigate to src directory
+      run: cd src
+
+    - name: ls
+      run: ls
+
+    - name: Create Build Directory
+      run: mkdir _build
+
+    - name: ls
+      run: ls
+      
+    - name: Restore Packages
+      run: nuget restore SearchAlgorithms.sln
+
+    - name: ls
+      run: ls
+
+    - name: Build Solution
+      run: |
+        msbuild.exe SearchAlgorithms.sln /p:PublishUrl="_build"
+
+    - name: ls
+      run: ls
+        
+    - name: Test
+      run: |
+        VSTest.Console.exe SearchAlgorithm.sln       
+        
