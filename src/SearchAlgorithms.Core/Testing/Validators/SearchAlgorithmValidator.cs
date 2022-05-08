@@ -14,7 +14,7 @@ namespace SearchAlgorithms.Core.Testing.Validators
             this.ProperlyWorkingAlgorithm = new BuiltInSearch();
         }
 
-        public bool Validate(string needle="abacabajabadabab", string haystack="ab")
+        public bool Validate(string needle="ab", string haystack="abacabajabadabab")
         {
             var algoResult = AlgoToValidate.Search(needle, haystack);
             var referentialResult = ProperlyWorkingAlgorithm.Search(needle, haystack);
