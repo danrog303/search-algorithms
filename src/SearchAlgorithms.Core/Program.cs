@@ -1,6 +1,7 @@
 ﻿using SearchAlgorithms.Core.Algorithms;
 using System;
 using System.Collections.Generic;
+using SearchAlgorithms.Core.Testing.Validators;
 
 namespace SearchAlgorithms.Core
 {
@@ -8,12 +9,24 @@ namespace SearchAlgorithms.Core
     {
         static void Main(string[] args)
         {
-            TestSearch fa = new TestSearch(10);
-            List<int> searchResult = fa.Search("do", "Napis do przeszukania");
-            foreach(var e in searchResult)
-            {
-                Console.WriteLine(e);
-            }
+            var currentlyCheckedAlgorithm = new KMPAlgoritm();
+
+            Console.WriteLine("Zaraz powinno wyświetlić się True, jeśli algorytm działa poprawnie.");
+            Console.WriteLine("Jeśli algorytm działa niepoprawnie, wyświetli się False.");
+            var validationResult = new SearchAlgorithmValidator(currentlyCheckedAlgorithm).Validate();
+            Console.WriteLine(validationResult);
+
+
+            var searchResult = currentlyCheckedAlgorithm.Search("bb", "aabbaabb");
+            var correctResult = new BuiltInSearch().Search("bb", "aabbaabb");
+
+            Console.WriteLine("\nWyszukuję napis bb w napisie aabbaabb");
+            Console.WriteLine("Poprawnie działający algorytm zwrócił takie dane: ");
+            Console.WriteLine(string.Join(" ", correctResult));
+            Console.WriteLine("Twój algorytm zwrócił takie dane: ");
+            Console.WriteLine(string.Join(" ", searchResult));
+
+
             Console.ReadKey();
         }
     }
