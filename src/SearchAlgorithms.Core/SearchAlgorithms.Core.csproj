@@ -53,8 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\BoyerMooreSearch.cs" />
+    <Compile Include="Algorithms\HashSearch.cs" />
     <Compile Include="Algorithms\ISearchAlgorithm.cs" />
     <Compile Include="Algorithms\BuiltInSearch.cs" />
+    <Compile Include="Algorithms\KMPAlgoritm.cs" />
+    <Compile Include="Algorithms\RabinKarpSearch.cs" />
+    <Compile Include="Algorithms\SequenceSearch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Algorithms\TestSearch.cs" />
