@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace SearchAlgorithms.Core.Algorithms
 {
-    class HashSearch : ISearchAlgorithm
+    public class HashSearch : ISearchAlgorithm
     {
-        static List<int> Hash(String ciag, String slo)
+        public List<int> Search(in string lookingString, in string longString)
         {
             double dl = 0;
-            int dl2, limit, n = slo.Length;    
-            limit = ciag.Length - slo.Length;
+            int dl2, limit, n = lookingString.Length;    
+            limit = longString.Length - lookingString.Length;
             //ile razy pierwszy znak szukanego slowa pojawia sie w przeszukiwanym ciagu
             for (int i = 0; i <= limit; i++) 
             {
-                if (ciag[i] == slo[0]) dl++;
+                if (longString[i] == lookingString[0]) dl++;
             }
             dl = 1.1 * dl; 
             dl2 = (int)dl;
@@ -35,7 +35,7 @@ namespace SearchAlgorithms.Core.Algorithms
             for (int i = 0; i <= limit; i++)
             {
                 //znalezienie kandydatow na szukane slowo
-                if (ciag[i] == slo[0])
+                if (longString[i] == lookingString[0])
                 {
                     string tmps = "";
                     int potega = licznik;
@@ -43,8 +43,8 @@ namespace SearchAlgorithms.Core.Algorithms
                     //algorytm haszujacy
                     for (int j = i; j < i + n; j++)
                     {
-                        tmps += ciag[j];
-                        wartoscASCII += ((int)ciag[j]) ^ potega;
+                        tmps += longString[j];
+                        wartoscASCII += ((int)longString[j]) ^ potega;
                         potega--;
                         if (potega == 0) potega = licznik;
                     }
@@ -64,9 +64,9 @@ namespace SearchAlgorithms.Core.Algorithms
             int potega1 = licznik;
             int wartoscASCII1 = 0;
             //algorytm haszujacy
-            for (int i = 0; i < slo.Length; i++)
+            for (int i = 0; i < lookingString.Length; i++)
             {
-                wartoscASCII1 += ((int)slo[i]) ^ potega1;
+                wartoscASCII1 += ((int)lookingString[i]) ^ potega1;
                 potega1--;
                 if (potega1 == 0) potega1 = licznik;
             }
@@ -78,7 +78,7 @@ namespace SearchAlgorithms.Core.Algorithms
             //przeszukanie tablicy haszujacej i wpisanie indeksow znalezionych slow do listy
             while (tmp1 != wartoscASCII1 && !String.IsNullOrEmpty(tabs[tmp1]))
             {
-                if (tabs[tmp1] == slo)
+                if (tabs[tmp1] == lookingString)
                 {
                     wyniki.Add(tab[tmp1]);
                 }
