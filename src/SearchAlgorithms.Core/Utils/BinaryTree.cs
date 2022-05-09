@@ -11,33 +11,35 @@ namespace SearchAlgorithms.Core.Utils
         public char Data { get; set; }
         public BinaryTreeNode Left { get; set; }
         public BinaryTreeNode Right { get; set; }
+        public int ElemNumber { get; set; }
         public BinaryTreeNode()
         {
 
         }
-        public BinaryTreeNode(char data)
+        public BinaryTreeNode(char data, int elemNumber)
         {
             this.Data = data;
-
+            this.ElemNumber = elemNumber;
         }
     }
     public class BinaryTree
     {
-        private BinaryTreeNode _root;
+        public BinaryTreeNode RootNode;
         public BinaryTree()
         {
-            _root = null;
+            RootNode = null;
         }
+        private int CurrentIndex = 0;
         public void Insert(char data)
         {
             // 1. Jeśli drzewo puste, return a new, single node 
-            if (_root == null)
+            if (RootNode == null)
             {
-                _root = new BinaryTreeNode(data);
+                RootNode = new BinaryTreeNode(data, this.CurrentIndex++);
                 return;
             }
             // 2. W przeciwnym wypadku, przejdz w dol drzewa 
-            InsertRec(_root, new BinaryTreeNode(data));
+            InsertRec(RootNode, new BinaryTreeNode(data, this.CurrentIndex++));
         }
         private void InsertRec(BinaryTreeNode root, BinaryTreeNode newNode)
         {
@@ -70,7 +72,7 @@ namespace SearchAlgorithms.Core.Utils
         }
         public void DisplayTree()
         {
-            DisplayTree(_root);
+            DisplayTree(RootNode);
         }
 
     }
