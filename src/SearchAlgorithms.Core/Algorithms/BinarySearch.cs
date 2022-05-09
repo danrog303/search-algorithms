@@ -6,7 +6,7 @@ using SearchAlgorithms.Core.Utils;
 namespace SearchAlgorithms.Core.Algorithms
 {
     // Note: this algorithm (partially) works only for strings with characters in alphabetical order
-    public class BinaryTreeSearch : ISearchAlgorithm
+    public class BinarySearch : ISearchAlgorithm
     {
         public string Name()
         {
