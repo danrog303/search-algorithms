@@ -57,7 +57,7 @@
     <Compile Include="Algorithms\HashSearch.cs" />
     <Compile Include="Algorithms\ISearchAlgorithm.cs" />
     <Compile Include="Algorithms\BuiltInSearch.cs" />
-    <Compile Include="Algorithms\KMPAlgoritm.cs" />
+    <Compile Include="Algorithms\KMPSearch.cs" />
     <Compile Include="Algorithms\RabinKarpSearch.cs" />
     <Compile Include="Algorithms\SequenceSearch.cs" />
     <Compile Include="Program.cs" />

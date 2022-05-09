@@ -9,7 +9,7 @@ namespace SearchAlgorithms.Core
     {
         static void Main(string[] args)
         {
-            var currentlyCheckedAlgorithm = new KMPAlgoritm();
+            var currentlyCheckedAlgorithm = new KMPSearch();
 
             Console.WriteLine("Zaraz powinno wyświetlić się True, jeśli algorytm działa poprawnie.");
             Console.WriteLine("Jeśli algorytm działa niepoprawnie, wyświetli się False.");
