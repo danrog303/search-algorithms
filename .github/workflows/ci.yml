@@ -1,0 +1,42 @@
+name: Continuous Integration
+
+on: [push, pull_request] 
+
+jobs:
+  continious-integration:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+      env:
+        # .NET Framework actions need unsecure commands to be enabled
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+    - name: Setup VSTest Path
+      uses: darenm/Setup-VSTest@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+      
+    - name: Restore Packages
+      run: |
+        cd src/
+        nuget restore
+      
+    - name: Build Solution
+      run: |
+        cd src/
+        msbuild.exe
+
+    - name: Run Unit Tests
+      run: |
+        cd src/SearchAlgorithms.UnitTests/bin/Debug/
+        vstest.console.exe SearchAlgorithms.UnitTests.dll
+        
