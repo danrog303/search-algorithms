@@ -3,7 +3,11 @@ name: Continuous Integration
 on: [push, pull_request] 
 
 jobs:
+<<<<<<< HEAD
   build:
+=======
+  continious-integration:
+>>>>>>> be79c8094599e84fa70f7902659f3ddff48300af
     runs-on: windows-latest
 
     steps:
@@ -11,12 +15,28 @@ jobs:
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
+<<<<<<< HEAD
 
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
 
     - name: Setup VSTest Path
       uses: darenm/Setup-VSTest@v1
+=======
+      env:
+        # .NET Framework actions need unsecure commands to be enabled
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+    - name: Setup VSTest Path
+      uses: darenm/Setup-VSTest@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+>>>>>>> be79c8094599e84fa70f7902659f3ddff48300af
       
     - name: Restore Packages
       run: |
