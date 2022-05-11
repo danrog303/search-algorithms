@@ -5,7 +5,7 @@ using SearchAlgorithms.Core.Utils;
 
 namespace SearchAlgorithms.Core.Algorithms
 {
-    // Note: this algorithm (partially) works only for strings with characters in alphabetical order
+    // Note: this algorithm works only with longString in alphabetical order and with one-character lookingString
     public class BinarySearch : ISearchAlgorithm
     {
         public string Name()
@@ -15,13 +15,14 @@ namespace SearchAlgorithms.Core.Algorithms
 
         public List<int> Search(in string lookingString, in string longString)
         {
-            string needle = string.Concat(lookingString.OrderBy(c => c));
+            string needle = lookingString[0].ToString();
+            string haystack = longString.SortCharacters();
 
             var continueExecution = true;
             var result = new List<int>();
             var tree = new BinaryTree();
 
-            Array.ForEach(longString.ToCharArray(), tree.Insert);
+            Array.ForEach(haystack.ToCharArray(), tree.Insert);
             var currentNode = tree.RootNode;
 
             int analysedIndex = 0;
@@ -39,7 +40,7 @@ namespace SearchAlgorithms.Core.Algorithms
 
                 if (analysedIndex == needle.Length)
                 {
-                    result.Add(currentNode.ElemNumber);
+                    result.Add(currentNode.ElemNumber );
                     analysedIndex = 0;
                 }
 

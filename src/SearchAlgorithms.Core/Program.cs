@@ -1,7 +1,9 @@
 ﻿using SearchAlgorithms.Core.Algorithms;
 using System;
 using System.Collections.Generic;
+using SearchAlgorithms.Core.Utils;
 using SearchAlgorithms.Core.Testing.Validators;
+using System.Security.Cryptography;
 
 namespace SearchAlgorithms.Core
 {
@@ -9,25 +11,34 @@ namespace SearchAlgorithms.Core
     {
         static void Main(string[] args)
         {
-            var currentlyCheckedAlgorithm = new KMPSearch();
+            var currentlyCheckedAlgorithm = new BinarySearch();
+            var correctlyWorkingAlgorithm = new BuiltInSearch();
 
-            Console.WriteLine("Zaraz powinno wyświetlić się True, jeśli algorytm działa poprawnie.");
-            Console.WriteLine("Jeśli algorytm działa niepoprawnie, wyświetli się False.");
-            var validationResult = new SearchAlgorithmValidator(currentlyCheckedAlgorithm).Validate();
-            Console.WriteLine(validationResult);
+            string haystack = GetRandomString(1000).SortCharacters();
+            string needle = haystack[new Random().Next(0, haystack.Length - 1)].ToString().SortCharacters();
 
+            Console.WriteLine(haystack);
+            Console.WriteLine(needle);
 
-            var searchResult = currentlyCheckedAlgorithm.Search("bb", "aabbaabb");
-            var correctResult = new BuiltInSearch().Search("bb", "aabbaabb");
-
-            Console.WriteLine("\nWyszukuję napis bb w napisie aabbaabb");
-            Console.WriteLine("Poprawnie działający algorytm zwrócił takie dane: ");
-            Console.WriteLine(string.Join(" ", correctResult));
-            Console.WriteLine("Twój algorytm zwrócił takie dane: ");
-            Console.WriteLine(string.Join(" ", searchResult));
+            Console.WriteLine(currentlyCheckedAlgorithm.Name());
+            Array.ForEach(currentlyCheckedAlgorithm.Search(needle, haystack).ToArray(), Console.WriteLine);
+            Console.WriteLine(correctlyWorkingAlgorithm.Name());
+            Array.ForEach(correctlyWorkingAlgorithm.Search(needle, haystack).ToArray(), Console.WriteLine);
 
 
             Console.ReadKey();
+        }
+
+        static string GetRandomString(int string_length)
+        {
+            using (var rng = new RNGCryptoServiceProvider())
+            {
+                var bit_count = (string_length * 6);
+                var byte_count = ((bit_count + 7) / 8);
+                var bytes = new byte[byte_count];
+                rng.GetBytes(bytes);
+                return Convert.ToBase64String(bytes);
+            }
         }
     }
 }

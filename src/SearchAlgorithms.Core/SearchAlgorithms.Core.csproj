@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\BinarySearch.cs" />
     <Compile Include="Algorithms\BoyerMooreSearch.cs" />
     <Compile Include="Algorithms\HashSearch.cs" />
     <Compile Include="Algorithms\ISearchAlgorithm.cs" />
@@ -64,7 +65,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Algorithms\TestSearch.cs" />
     <Compile Include="Testing\Validators\SearchAlgorithmValidator.cs" />
+    <Compile Include="Utils\BinaryTree.cs" />
     <Compile Include="Utils\PrimeNumberUtils.cs" />
+    <Compile Include="Utils\StringSort.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
