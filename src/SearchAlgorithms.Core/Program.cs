@@ -14,8 +14,8 @@ namespace SearchAlgorithms.Core
             var currentlyCheckedAlgorithm = new KMPSearch();
             var correctlyWorkingAlgorithm = new BuiltInSearch();
 
-            string haystack = "aaaooooooaa";
-            string needle = "ooo";
+            string haystack = "oooo";
+            string needle = "oo";
 
             Console.WriteLine(haystack);
             Console.WriteLine(needle);

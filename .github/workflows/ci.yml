@@ -1,6 +1,12 @@
 name: continious integration
 
-on: [push, pull_request] 
+on:
+  push:
+    paths:
+      - "**.cs"
+      - "**.csproj"
+      - "**.sln"
+      - ".github/workflows/*.yml"
 
 jobs:
   continious-integration:

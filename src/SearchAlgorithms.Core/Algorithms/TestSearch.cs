@@ -10,7 +10,7 @@ namespace SearchAlgorithms.Core.Algorithms
             this.random = random;
         }
 
-        private int random;
+        private readonly int random;
 
         public string Name()
         {
