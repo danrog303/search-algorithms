@@ -11,11 +11,11 @@ namespace SearchAlgorithms.Core
     {
         static void Main(string[] args)
         {
-            var currentlyCheckedAlgorithm = new BinarySearch();
+            var currentlyCheckedAlgorithm = new KMPSearch();
             var correctlyWorkingAlgorithm = new BuiltInSearch();
 
-            string haystack = GetRandomString(1000).SortCharacters();
-            string needle = haystack[new Random().Next(0, haystack.Length - 1)].ToString().SortCharacters();
+            string haystack = "aaaooooooaa";
+            string needle = "ooo";
 
             Console.WriteLine(haystack);
             Console.WriteLine(needle);
