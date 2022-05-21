@@ -31,9 +31,9 @@ namespace SearchAlgorithms.Interface
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,8 +43,7 @@ namespace SearchAlgorithms.Interface
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageTime = new System.Windows.Forms.TabPage();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPageIndex = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -55,16 +54,19 @@ namespace SearchAlgorithms.Interface
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.errorProviderLong = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderLooking = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dataGridViewIndex = new System.Windows.Forms.DataGridView();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
+            this.tabPageIndex.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLooking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIndex)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -147,13 +149,13 @@ namespace SearchAlgorithms.Interface
             // tabControl
             // 
             this.tabControl.Controls.Add(this.tabPageTime);
-            this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Controls.Add(this.tabPageIndex);
             this.tabControl.Location = new System.Drawing.Point(261, 38);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(536, 360);
             this.tabControl.TabIndex = 4;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPageTime
             // 
@@ -168,41 +170,32 @@ namespace SearchAlgorithms.Interface
             // 
             // chart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
+            chartArea5.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea5);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart.Legends.Add(legend1);
+            legend5.Name = "Legend1";
+            this.chart.Legends.Add(legend5);
             this.chart.Location = new System.Drawing.Point(3, 3);
             this.chart.Name = "chart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chart.Series.Add(series5);
             this.chart.Size = new System.Drawing.Size(522, 328);
             this.chart.TabIndex = 3;
             this.chart.TabStop = false;
             this.chart.Text = "chart1";
             // 
-            // tabPage2
+            // tabPageIndex
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(528, 334);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(528, 334);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPageIndex.Controls.Add(this.dataGridViewIndex);
+            this.tabPageIndex.Location = new System.Drawing.Point(4, 22);
+            this.tabPageIndex.Name = "tabPageIndex";
+            this.tabPageIndex.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageIndex.Size = new System.Drawing.Size(528, 334);
+            this.tabPageIndex.TabIndex = 1;
+            this.tabPageIndex.Text = "Index";
+            this.tabPageIndex.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
             // 
@@ -290,6 +283,16 @@ namespace SearchAlgorithms.Interface
             // 
             this.errorProviderLooking.ContainerControl = this;
             // 
+            // dataGridViewIndex
+            // 
+            this.dataGridViewIndex.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewIndex.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewIndex.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewIndex.Name = "dataGridViewIndex";
+            this.dataGridViewIndex.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridViewIndex.Size = new System.Drawing.Size(522, 328);
+            this.dataGridViewIndex.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,11 +311,13 @@ namespace SearchAlgorithms.Interface
             this.tabControl.ResumeLayout(false);
             this.tabPageTime.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
+            this.tabPageIndex.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLooking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIndex)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,14 +337,14 @@ namespace SearchAlgorithms.Interface
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageTime;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPageIndex;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.RichTextBox richTextBoxLongString;
         private System.Windows.Forms.TextBox textBoxMarkAlgo;
+        private System.Windows.Forms.DataGridView dataGridViewIndex;
     }
 }
 
