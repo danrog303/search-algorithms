@@ -1,20 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-
-
-
 namespace SearchAlgorithms.Core.Algorithms
-
 {
-
-
-
     public class BoyerMooreSearch : ISearchAlgorithm
-
     {
-
         private static int StringLength = 256;
-
 
         //heurystyka złego znaku
         private static void BadCharHeuristic(string str, int size, int[] badchar)
@@ -31,19 +21,12 @@ namespace SearchAlgorithms.Core.Algorithms
         }
 
         /* Funkcja wyszukiwania wzorców, która używa Bad Heurystyka znaków */
-
         public string Name()
-
         {
-
             return "Boyer Moore";
-
         }
 
-
-
         public List<int> Search(in string lookingString, in string longString)
-
         {
             var result = new List<int>();
             int m = lookingString.Length;
@@ -61,10 +44,9 @@ namespace SearchAlgorithms.Core.Algorithms
             {
                 int j = m - 1;
 
-
                 /*  zmniejszanie indeksu j wzoru, podczas gdy
-                 znaki wzoru i tekstu są
-               dopasowanie na tej zmianie s */
+                         znaki wzoru i tekstu są
+                       dopasowanie na tej zmianie s */
                 while (j >= 0 && lookingString[j] == longString[s + j])
                     j--;
 
@@ -83,7 +65,6 @@ namespace SearchAlgorithms.Core.Algorithms
                     s += (s + m < n) ? m - badchar[longString[s + m]] : 1;
 
                 }
-
                 else
                     /* Przesuwa wzorzec tak, aby zły znak
                         w tekście wyrównał się z ostatnim wystąpieniem
@@ -94,11 +75,7 @@ namespace SearchAlgorithms.Core.Algorithms
                         jest po prawej stronie obecnej postać. */
                     s += Math.Max(1, j - badchar[longString[s + j]]);
             }
-
-
             return result;
         }
-
     }
-
 }
