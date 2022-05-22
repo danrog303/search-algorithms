@@ -23,7 +23,7 @@ Angielska wersja pliku readme 🇬🇧 [jest dostępna tutaj](https://github.com
 Aplikacja została stworzona w języku C# przy użyciu .NET Framework 4.8. Przed skompilowaniem projektu należy zainstalować narzędzia **Nuget** oraz **MSBuild**. Ponieważ graficzny interfejs użytkownika korzysta z biblioteki WinForms, aplikacja może zostać skompilowana i uruchomiona wyłącznie na systemach z rodziny Windows.
 ```
 git clone https://github.com/danrog303/search-algorithms
-cd search-algorithm/src
+cd search-algorithms/src
 nuget restore
 msbuild.exe
 ```
