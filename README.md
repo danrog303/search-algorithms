@@ -2,7 +2,9 @@
 ![Continious Integration](https://github.com/danrog303/search-algorithms/actions/workflows/ci.yml/badge.svg)
 ![PRs](https://shields.io/github/issues-pr-closed-raw/danrog303/search-algorithms)
 ![Contributors](https://shields.io/github/contributors/danrog303/search-algorithms)
-> Application which presents and compares various substring searching algorithms.    
+> Application which presents and compares various substring searching algorithms.  
+
+Polish version of readme file 🇵🇱 [is available here](https://github.com/danrog303/search-algorithms/blob/main/README.polish.md). 
 
 ## ✨ Features
 1. Application allows to type two strings (haystack and needle) and it will find all occurences of needle in haystack
