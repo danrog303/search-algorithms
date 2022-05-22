@@ -23,7 +23,7 @@ Polish version of readme file 🇵🇱 [is available here](https://github.com/da
 Application has been written in C#, using .NET Framework 4.8. You have to install **Nuget** and **MSBuild** before compiling this project. Because the GUI uses WinForms library, the application can only be compiled on Windows systems.
 ```
 git clone https://github.com/danrog303/search-algorithms
-cd search-algorithm/src
+cd search-algorithms/src
 nuget restore
 msbuild.exe
 ```
@@ -33,4 +33,4 @@ The application was created as an project assignment during the second semester 
 
 ## 📔 Documentation
 You can find detailed documentation of the project [here on our GitHub Wiki](https://github.com/danrog303/search-algorithms/wiki).  
-Unfortunately, Wiki is available only in Polish 🇵🇱.
+Unfortunately, the Wiki is available only in Polish 🇵🇱.
