@@ -32,4 +32,5 @@ msbuild.exe
 The application was created as an project assignment during the second semester of studies at [Bydgoszcz University of Science and Technology](https://pbs.edu.pl/).
 
 ## 📔 Documentation
-You can find detailed documentation of the project [here on our GitHub Wiki](https://github.com/danrog303/search-algorithms/wiki).
+You can find detailed documentation of the project [here on our GitHub Wiki](https://github.com/danrog303/search-algorithms/wiki).  
+Unfortunately, Wiki is available only in Polish 🇵🇱.
