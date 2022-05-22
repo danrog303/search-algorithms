@@ -112,8 +112,8 @@ namespace SearchAlgorithms.Core.Algorithms
 				tmp /= 100;
 			}
 
-			insert(lookingString, longString, limit, counter, size, n, array, arrays);
-			return find(counter, size, lookingString, array, arrays);
+			Insert(lookingString, longString, limit, counter, size, n, array, arrays);
+			return Find(counter, size, lookingString, array, arrays);
 		}
 
 		public string Name()
