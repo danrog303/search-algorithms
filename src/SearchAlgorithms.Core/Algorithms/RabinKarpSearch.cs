@@ -12,58 +12,58 @@ namespace SearchAlgorithms.Core.Algorithms
 
         /* pat -> pattern
             txt -> text
-            q -> Liczba pierwsza
+            primeNumber -> Liczba pierwsza
         */
         public List<int> Search(in string pat, in string txt)
         {
-            const int q = 101;
+            const int primeNumber = 101;
             var result = new List<int>();
 
-            int M = pat.Length;
-            int N = txt.Length;
+            int patternLength = pat.Length;
+            int textLength = txt.Length;
             int i, j;
-            int p = 0; // wartosc hashu patternu 
-            int t = 0; // wartosc hashu txt
+            int hashPatternValue = 0; // wartosc hashu patternu 
+            int hashTxtValue = 0; // wartosc hashu txt
             int h = 1;
 
-            // h bedzie mialo wartosc pow(d,M-1)%q
-            for (i = 0; i < M - 1; i++)
-                h = (h * d) % q;
+            // h bedzie mialo wartosc pow(d,patternLength-1)%primeNumber
+            for (i = 0; i < patternLength - 1; i++)
+                h = (h * d) % primeNumber;
             // Oblicza wartosc hasha patternu i pierwszego ucinka
 
-            for (i = 0; i < M; i++)
+            for (i = 0; i < patternLength; i++)
             {
-                p = (d * p + pat[i]) % q;
-                t = (d * t + txt[i]) % q;
+                hashPatternValue = (d * hashPatternValue + pat[i]) % primeNumber;
+                hashTxtValue = (d * hashTxtValue + txt[i]) % primeNumber;
             }
 
             // Przesuwa pattern po calym stringu
-            for (i = 0; i <= N - M; i++)
+            for (i = 0; i <= textLength - patternLength; i++)
             {
 
                 // Sprawdza hash aktualnego urywka
                 // sprawdza litery tylko jezeli hash sie zgadza
-                if (p == t)
+                if (hashPatternValue == hashTxtValue)
                 {
                     // Sprawdzanie liter
-                    for (j = 0; j < M; j++)
+                    for (j = 0; j < patternLength; j++)
                     {
                         if (txt[i + j] != pat[j])
                             break;
                     }
 
-                    // jeżeli  p == t and pat[0...M-1] = txt[i, i+1, ...i+M-1]
-                    if (j == M)
+                    // jeżeli  hashPatternValue == hashTxtValue and pat[0...patternLength-1] = txt[i, i+1, ...i+patternLength-1]
+                    if (j == patternLength)
                         result.Add(i);
                 }
                 // Oblicza wartosc hash kolejnego odcinku i usuwa pierwsza i koncowa cyfre
-                if (i < N - M)
+                if (i < textLength - patternLength)
                 {
-                    t = (d * (t - txt[i] * h) + txt[i + M]) % q;
+                    hashTxtValue = (d * (hashTxtValue - txt[i] * h) + txt[i + patternLength]) % primeNumber;
 
                     // Jak dostaniemy ujemna wartosc konwertujemy ja
-                    if (t < 0)
-                        t = (t + q);
+                    if (hashTxtValue < 0)
+                        hashTxtValue = (hashTxtValue + primeNumber);
                 }
             }
 
