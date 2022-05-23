@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using SearchAlgorithms.Core.Algorithms;
+using SearchAlgorithms.Core.Utils;
 
 namespace SearchAlgorithms.Core.Testing.Timers
 {
@@ -14,11 +16,19 @@ namespace SearchAlgorithms.Core.Testing.Timers
 
         public double Measure()
         {
+            Stopwatch stopwatchUnifyTimeUnit = new Stopwatch();
+            stopwatchUnifyTimeUnit.Start();
+            PrimeNumberUtils.FindNthPrimeNumber(4500); // Time unifier execution time
+            stopwatchUnifyTimeUnit.Stop();
+            double unifyExecutionTime = stopwatchUnifyTimeUnit.Elapsed.TotalMilliseconds;
+            
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            FunctionToMeasure();
+            FunctionToMeasure(); // Search algorithm execution time
             stopwatch.Stop();
-            return stopwatch.Elapsed.TotalMilliseconds;
+            double algorithmExecutionTime = stopwatch.Elapsed.TotalMilliseconds;
+            
+            return algorithmExecutionTime / unifyExecutionTime; // Unifying execution time
         }
     }
 }
