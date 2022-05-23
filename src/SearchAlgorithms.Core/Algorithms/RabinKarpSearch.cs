@@ -33,8 +33,8 @@ namespace SearchAlgorithms.Core.Algorithms
 
             for (i = 0; i < patternLength; i++)
             {
-                hashPatternValue = (d * hashPatternValue + pat[i]) % q;
-                hashTxtValue = (d * hashTxtValue + txt[i]) % q;
+                hashPatternValue = (d * hashPatternValue + pat[i]) % primeNumber;
+                hashTxtValue = (d * hashTxtValue + txt[i]) % primeNumber;
             }
 
             // Przesuwa pattern po calym stringu
