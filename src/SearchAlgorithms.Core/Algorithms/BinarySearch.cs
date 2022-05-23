@@ -15,6 +15,11 @@ namespace SearchAlgorithms.Core.Algorithms
 
         public List<int> Search(in string lookingString, in string longString)
         {
+            if (longString.Length == 0)
+            {
+                return new List<int>();
+            }
+
             string needle = lookingString[0].ToString();
             string haystack = longString.SortCharacters();
 

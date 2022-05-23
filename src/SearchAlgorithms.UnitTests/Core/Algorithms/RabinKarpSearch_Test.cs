@@ -40,7 +40,7 @@ namespace SearchAlgorithms.UnitTests.Core.Algorithms
         public void Search_ShouldBehaveCorrectlyWhenNoSubstringOccurenceFound_Case1()
         {
             var algo = new RabinKarpSearch();
-            CollectionAssert.AreEquivalent(new int[] { 1 }, algo.Search("a", "")); // Search algorithm does not work for empty strings
+            CollectionAssert.AreEquivalent(new int[0], algo.Search("a", "")); // Search algorithm does not work for empty strings
         }
         // Check if string array is empty while checking for elements
         // If array is empty there can't be any elements within it
