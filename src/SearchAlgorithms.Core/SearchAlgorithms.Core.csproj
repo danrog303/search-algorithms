@@ -64,10 +64,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Algorithms\TestSearch.cs" />
+    <Compile Include="Testing\Timers\PrimeNumbersTimeMeasure.cs" />
+    <Compile Include="Testing\Timers\UnifiedUnitTimeMeasure.cs" />
     <Compile Include="Testing\Timers\TimeMeasure.cs" />
     <Compile Include="Testing\Validators\SearchAlgorithmValidator.cs" />
     <Compile Include="Utils\BinaryTree.cs" />
     <Compile Include="Utils\PrimeNumberUtils.cs" />
+    <Compile Include="Utils\RandomString.cs" />
     <Compile Include="Utils\StringSort.cs" />
   </ItemGroup>
   <ItemGroup>

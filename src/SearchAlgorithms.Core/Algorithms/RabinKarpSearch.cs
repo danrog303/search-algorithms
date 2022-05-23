@@ -16,6 +16,11 @@ namespace SearchAlgorithms.Core.Algorithms
         */
         public List<int> Search(in string pat, in string txt)
         {
+            if (txt.Length == 0)
+            {
+                return new List<int>();
+            }
+
             const int primeNumber = 101;
             var result = new List<int>();
 

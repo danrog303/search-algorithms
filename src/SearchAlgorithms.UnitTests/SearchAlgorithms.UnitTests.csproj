@@ -50,7 +50,13 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Algorithms\BinarySearch_Test.cs" />
+    <Compile Include="Core\Algorithms\BoyerMooreSearch_Test.cs" />
     <Compile Include="Core\Algorithms\BuiltInSearch_Test.cs" />
+    <Compile Include="Core\Algorithms\HashSearch_Test.cs" />
+    <Compile Include="Core\Algorithms\KMPSearch_Test.cs" />
+    <Compile Include="Core\Algorithms\RabinKarpSearch_Test.cs" />
+    <Compile Include="Core\Algorithms\SequenceSearch_Test.cs" />
     <Compile Include="Core\Algorithms\TestSearch_Test.cs" />
     <Compile Include="Core\Testing\Validators\SearchAlgorithmValidator_Test.cs" />
     <Compile Include="Core\Utils\PrimeNumberUtils_Test.cs" />

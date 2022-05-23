@@ -30,5 +30,11 @@ namespace SearchAlgorithms.UnitTests.Core.Algorithms
             var results = algo.Search("ba", "");
             Assert.AreEqual(0, results.Count);
         }
+        [TestMethod]
+        public void Search_ShouldWorkForDigits()
+        {
+            var algo = new BinarySearch();
+            CollectionAssert.AreEquivalent(new int[] { 6 }, algo.Search("6", "0123456789"));
+        }
     }
 }

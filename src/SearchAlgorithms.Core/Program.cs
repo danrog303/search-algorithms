@@ -4,12 +4,21 @@ using System.Collections.Generic;
 using SearchAlgorithms.Core.Utils;
 using SearchAlgorithms.Core.Testing.Validators;
 using System.Security.Cryptography;
+using SearchAlgorithms.Core.Testing.Timers;
 
 namespace SearchAlgorithms.Core
 {
     public class Program
     {
-        static void Main(string[] args)
+        static void Main()
+        {
+            var measurementResult = new PrimeNumbersTimeMeasure(MainFunc, 4500).UnifiedUnitMeasure();
+            Console.WriteLine($"Wykonanie zajęło {measurementResult.ResultInReferrentialUnit} jednostek pomiaru");
+            Console.WriteLine($"(czyli {measurementResult.OriginalResult} milisekund)");
+            Console.ReadKey();
+        }
+
+        static void MainFunc()
         {
             var currentlyCheckedAlgorithm = new KMPSearch();
             var correctlyWorkingAlgorithm = new BuiltInSearch();
@@ -24,21 +33,6 @@ namespace SearchAlgorithms.Core
             Array.ForEach(currentlyCheckedAlgorithm.Search(needle, haystack).ToArray(), Console.WriteLine);
             Console.WriteLine(correctlyWorkingAlgorithm.Name());
             Array.ForEach(correctlyWorkingAlgorithm.Search(needle, haystack).ToArray(), Console.WriteLine);
-
-
-            Console.ReadKey();
-        }
-
-        static string GetRandomString(int string_length)
-        {
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                var bit_count = (string_length * 6);
-                var byte_count = ((bit_count + 7) / 8);
-                var bytes = new byte[byte_count];
-                rng.GetBytes(bytes);
-                return Convert.ToBase64String(bytes);
-            }
         }
     }
 }
