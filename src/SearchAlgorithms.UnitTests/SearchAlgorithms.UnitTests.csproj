@@ -54,7 +54,6 @@
     <Compile Include="Core\Algorithms\BoyerMooreSearch_Test.cs" />
     <Compile Include="Core\Algorithms\BuiltInSearch_Test.cs" />
     <Compile Include="Core\Algorithms\HashSearch_Test.cs" />
-    <Compile Include="Core\Algorithms\ISearchAlgorithm_Test.cs" />
     <Compile Include="Core\Algorithms\KMPSearch_Test.cs" />
     <Compile Include="Core\Algorithms\RabinKarpSearch_Test.cs" />
     <Compile Include="Core\Algorithms\SequenceSearch_Test.cs" />
