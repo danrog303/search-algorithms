@@ -2,7 +2,6 @@ name: continious integration
 
 on:
   pull_request:
-  workflow_dispatch:
   push:
     paths:
       - "**.cs"
@@ -17,9 +16,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      with:
-        ref: ${{github.event.pull_request.head.ref}}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
