@@ -59,11 +59,11 @@ namespace SearchAlgorithms.Core.Algorithms
                 // Oblicza wartosc hash kolejnego odcinku i usuwa pierwsza i koncowa cyfre
                 if (i < textLength - patternLength)
                 {
-                    hashTxtValue = (d * (hashTxtValue - txt[i] * h) + txt[i + patternLength]) % q;
+                    hashTxtValue = (d * (hashTxtValue - txt[i] * h) + txt[i + patternLength]) % primeNumber;
 
                     // Jak dostaniemy ujemna wartosc konwertujemy ja
                     if (hashTxtValue < 0)
-                        hashTxtValue = (hashTxtValue + q);
+                        hashTxtValue = (hashTxtValue + primeNumber);
                 }
             }
 
