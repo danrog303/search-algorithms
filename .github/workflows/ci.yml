@@ -1,6 +1,7 @@
 name: continious integration
 
 on:
+  pull_request_target:
   workflow_dispatch:
   push:
     paths:
