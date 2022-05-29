@@ -5,14 +5,30 @@ using SearchAlgorithms.Core.Utils;
 
 namespace SearchAlgorithms.Core.Algorithms
 {
-    // Note: this algorithm works only with longString in alphabetical order and with one-character lookingString
+    /// <summary>
+    /// Algorytm wyszukiwania podłańcuchów metodą drzewa binarnego.
+    /// </summary>
+    /// <remarks>
+    /// Ważna informacja: algorytm <see cref="BinarySearch"/> działa wyłącznie dla posortowanych łańcuchów znaków,
+    /// oraz tylko w przypadku gdy szukanym podłańcuchem jest pojedynczy znak.
+    /// </remarks>
     public class BinarySearch : ISearchAlgorithm
     {
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Name"/>.
+        /// </summary>
         public string Name()
         {
-            return "binary tree search";
+            return "Binary-Tree";
         }
 
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Search(in string, in string)"/>.
+        /// </summary>
+        /// <remarks>
+        /// Działa wyłącznie dla posortowanego <paramref name="longString"/> oraz dla <paramref name="lookingString"/>
+        /// składającego się wyłącznie z jednego znaku.
+        /// </remarks>
         public List<int> Search(in string lookingString, in string longString)
         {
             if (longString.Length == 0)

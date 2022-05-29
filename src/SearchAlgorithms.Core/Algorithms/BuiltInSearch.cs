@@ -4,13 +4,23 @@ using System.Text.RegularExpressions;
 
 namespace SearchAlgorithms.Core.Algorithms
 {
+    /// <summary>
+    /// Klasa zawierająca wzorcowy algorytm wyszukiwania podłańcuchów. Zakładamy, że algorytm <see cref="BuiltInSearch"/>
+    /// zwraca zawsze poprawne dane i nigdy się nie myli.
+    /// </summary>
     public class BuiltInSearch : ISearchAlgorithm
     {
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Name"/>.
+        /// </summary>
         public string Name()
         {
-            return "C# built-in search";
+            return "Built-In-Search";
         }
 
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Search(in string, in string)"/>.
+        /// </summary>
         public List<int> Search(in string lookingString, in string longString)
         {
             List<int> result = new List<int>();

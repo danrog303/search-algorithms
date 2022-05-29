@@ -8,8 +8,15 @@ using SearchAlgorithms.Core.Testing.Timers;
 
 namespace SearchAlgorithms.Core
 {
-    public class Program
+    /// <summary>
+    /// Klasa będąca punktem startowym interfejsu tekstowego.
+    /// </summary>
+    public static class Program
     {
+        /// <summary>
+        /// Funkcja główna, wywoływana w momencie uruchomienia programu. Wywołuje funkcję MainFunc,
+        /// mierząc jej czas wykonania.
+        /// </summary>
         static void Main()
         {
             var measurementResult = new PrimeNumbersTimeMeasure(MainFunc, 4500).UnifiedUnitMeasure();
@@ -18,6 +25,9 @@ namespace SearchAlgorithms.Core
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Funkcja zawierające właściwe działanie interfejsu tekstowego.
+        /// </summary>
         static void MainFunc()
         {
             var currentlyCheckedAlgorithm = new KMPSearch();

@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace SearchAlgorithms.Core.Utils
 {
+    /// <summary>
+    /// Klasa zawierająca pomocnicze funkcje statyczne związane z liczbami pierwszymi.
+    /// </summary>
     public static class PrimeNumberUtils
     {
+        /// <summary>
+        /// Funkcja pomocnicza, która sprawdza, czy wskazana jako argument liczba jest liczbą pierwszą.
+        /// </summary>
+        /// <param name="number">Liczba, na której ma zostać wykonany test pierwszości</param>
+        /// <returns>Zwraca informację, czy wskazany argument jest liczbą pierwszą.</returns>
         public static bool IsPrime(long number)
         {
             if (number == 1) return false;
@@ -28,6 +36,11 @@ namespace SearchAlgorithms.Core.Utils
             return true;
         }
 
+        /// <summary>
+        /// Funkcja pomocnicza, która zwraca n-tą istniejącą liczbę pierwszą.
+        /// </summary>
+        /// <param name="n">Numer liczby pierwszej do wygenerowania.</param>
+        /// <returns>Zwraca n-tą liczbę pierwszą.</returns>
         public static long FindNthPrimeNumber(long n)
         {
             long currentlyAnalysedNumber = 1;

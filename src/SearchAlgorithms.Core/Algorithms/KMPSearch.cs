@@ -4,14 +4,22 @@ using System.Collections.Generic;
 
 namespace SearchAlgorithms.Core.Algorithms
 {
+    /// <summary>
+    /// Algorytm wyszukiwania podłańcuchów metodą Knutha-Morrisa-Pratta
+    /// </summary>
     public class KMPSearch : ISearchAlgorithm
     {
-
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Name"/>.
+        /// </summary>
         public string Name()
         {
-            return "Knutha-Morrisa-Pratta";
+            return "Knuth-Morris-Pratt";
         }
 
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Search(in string, in string)"/>.
+        /// </summary>
         public List<int> Search(in string lookingString, in string longString)
         {
             var result = new List<int>();
@@ -51,6 +59,12 @@ namespace SearchAlgorithms.Core.Algorithms
             return result;
         }
 
+        /// <summary>
+        /// TODO: FILL THIS ENTRY
+        /// </summary>
+        /// <param name="lookingString">TODO: FILL THIS ENTRY</param>
+        /// <param name="a">TODO: FILL THIS ENTRY</param>
+        /// <param name="lps">TODO: FILL THIS ENTRY</param>
         private static void ComputeLPSArray(string lookingString, int a, int[] lps)
         {
             int length = 0;

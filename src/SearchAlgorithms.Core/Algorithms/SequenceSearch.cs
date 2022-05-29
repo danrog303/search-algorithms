@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace SearchAlgorithms.Core.Algorithms
 {
+    /// <summary>
+    /// Algorytm wyszukiwania podłańcuchów metodą wyszukiwania sekwencyjnego.
+    /// </summary>
     public class SequenceSearch : ISearchAlgorithm
     {
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Name"/>.
+        /// </summary>
         public string Name()
         {
-            return  "SequenceSearch";
+            return  "Sequence";
         }
 
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Search(in string, in string)"/>.
+        /// </summary>
         public List<int> Search(in string lookingString, in string longString)
         {
             var result = new List<int>();

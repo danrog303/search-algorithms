@@ -1,19 +1,21 @@
 using System;
 using System.Collections.Generic;
 
-
-
 namespace SearchAlgorithms.Core.Algorithms
 {
-
+    /// <summary>
+    /// Algorytm wyszukiwania podłańcuchów metodą Rabina-Karpa.
+    /// </summary>
     public class RabinKarpSearch : ISearchAlgorithm
     {
+        /// <summary>
+        /// TODO: FILL THIS ENTRY
+        /// </summary>
         private readonly static int d = 256;
 
-        /* pat -> pattern
-            txt -> text
-            primeNumber -> Liczba pierwsza
-        */
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Search(in string, in string)"/>.
+        /// </summary>
         public List<int> Search(in string pat, in string txt)
         {
             if (txt.Length == 0)
@@ -27,14 +29,14 @@ namespace SearchAlgorithms.Core.Algorithms
             int patternLength = pat.Length;
             int textLength = txt.Length;
             int i, j;
-            int hashPatternValue = 0; // wartosc hashu patternu 
-            int hashTxtValue = 0; // wartosc hashu txt
+            int hashPatternValue = 0; 
+            int hashTxtValue = 0; 
             int h = 1;
 
-            // h bedzie mialo wartosc pow(d,patternLength-1)%primeNumber
             for (i = 0; i < patternLength - 1; i++)
+            {
                 h = (h * d) % primeNumber;
-            // Oblicza wartosc hasha patternu i pierwszego ucinka
+            }
 
             for (i = 0; i < patternLength; i++)
             {
@@ -42,12 +44,11 @@ namespace SearchAlgorithms.Core.Algorithms
                 hashTxtValue = (d * hashTxtValue + txt[i]) % primeNumber;
             }
 
-            // Przesuwa pattern po calym stringu
+            // Przesuwa pattern po całym stringu
             for (i = 0; i <= textLength - patternLength; i++)
             {
-
                 // Sprawdza hash aktualnego urywka
-                // sprawdza litery tylko jezeli hash sie zgadza
+                // Sprawdza litery tylko jeżeli hash się zgadza
                 if (hashPatternValue == hashTxtValue)
                 {
                     // Sprawdzanie liter
@@ -57,16 +58,17 @@ namespace SearchAlgorithms.Core.Algorithms
                             break;
                     }
 
-                    // jeżeli  hashPatternValue == hashTxtValue and pat[0...patternLength-1] = txt[i, i+1, ...i+patternLength-1]
+                    // Jeżeli hashPatternValue == hashTxtValue ORAZ pat[0...patternLength-1] = txt[i, i+1, ...i+patternLength-1]
                     if (j == patternLength)
                         result.Add(i);
                 }
-                // Oblicza wartosc hash kolejnego odcinku i usuwa pierwsza i koncowa cyfre
+
+                // Oblicza wartosc hashu kolejnego odcinka i usuwa pierwsząą i końcową cyfrę
                 if (i < textLength - patternLength)
                 {
                     hashTxtValue = (d * (hashTxtValue - txt[i] * h) + txt[i + patternLength]) % primeNumber;
 
-                    // Jak dostaniemy ujemna wartosc konwertujemy ja
+                    // Jeśli otrzymamy ujemną wartość, konwertujemy ją
                     if (hashTxtValue < 0)
                         hashTxtValue = (hashTxtValue + primeNumber);
                 }
@@ -75,6 +77,9 @@ namespace SearchAlgorithms.Core.Algorithms
             return result;
         }
 
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Name"/>.
+        /// </summary>
         public string Name()
         {
             return "Rabin Karp";
