@@ -22,14 +22,23 @@ namespace SearchAlgorithms.Core.Algorithms
         /// </summary>
         private readonly int random;
 
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Name"/>.
+        /// </summary>
         public string Name()
         {
             return "random-time testing algorithm";
         }
+
+        /// <summary>
+        /// Implementuje metodę <see cref="ISearchAlgorithm.Search(in string, in string)"/>.
+        /// </summary>
+        /// <remarks>
+        /// Zwrócenie danych jest opóźniane o (<see cref="TestSearch.random"/>) milisekund.
+        /// </remarks>
         public List<int> Search(in string lookingString, in string longString)
         {
-
-            Thread.Sleep(random%100+1);
+            Thread.Sleep(random % 100 + 1);
             return new BuiltInSearch().Search(lookingString, longString);
         }
 
