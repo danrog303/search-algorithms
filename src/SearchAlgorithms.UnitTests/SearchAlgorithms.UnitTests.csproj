@@ -58,8 +58,13 @@
     <Compile Include="Core\Algorithms\RabinKarpSearch_Test.cs" />
     <Compile Include="Core\Algorithms\SequenceSearch_Test.cs" />
     <Compile Include="Core\Algorithms\TestSearch_Test.cs" />
+    <Compile Include="Core\Testing\Timers\TimeMeasure_Test.cs" />
+    <Compile Include="Core\Testing\Timers\UnifiedUnitTimeMeasure_Test.cs" />
     <Compile Include="Core\Testing\Validators\SearchAlgorithmValidator_Test.cs" />
+    <Compile Include="Core\Utils\BinaryTree_Test.cs" />
     <Compile Include="Core\Utils\PrimeNumberUtils_Test.cs" />
+    <Compile Include="Core\Utils\RandomString_Test.cs" />
+    <Compile Include="Core\Utils\StringSort_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -80,9 +85,7 @@
       <Name>SearchAlgorithms.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Testing\Timers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
