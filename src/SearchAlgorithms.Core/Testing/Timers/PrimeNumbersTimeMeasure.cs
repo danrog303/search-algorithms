@@ -16,16 +16,15 @@ namespace SearchAlgorithms.Core.Testing.Timers
         /// <returns>Czas szukania liczb pierwszych w milisekundach</returns>
         private static double MeasureReferentialUnit(long numbersToCalculate)
         {
-            var timer = new TimeMeasure(() => PrimeNumberUtils.FindNthPrimeNumber(numbersToCalculate));
-            return timer.Measure();
+            var timer = new TimeMeasure();
+            return timer.Measure(() => PrimeNumberUtils.FindNthPrimeNumber(numbersToCalculate));
         }
 
         /// <summary>
         /// Konstruuje nowy obiekt klasy <see cref="PrimeNumbersTimeMeasure"/>.
         /// </summary>
-        /// <param name="functionToMeasure">Funkcja, której czas wykonania ma zostać zmierzony.</param>
         /// <param name="primeNumbersToCalculate">Ilość liczb pierwszych, na podstawie których ma zostać wyznaczona jednostka referencyjna.</param>
-        public PrimeNumbersTimeMeasure(Action functionToMeasure, long primeNumbersToCalculate = 4500) : base(functionToMeasure, MeasureReferentialUnit(primeNumbersToCalculate))
+        public PrimeNumbersTimeMeasure(long primeNumbersToCalculate = 4500) : base(MeasureReferentialUnit(primeNumbersToCalculate))
         {
         }
     }

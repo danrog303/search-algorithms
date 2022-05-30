@@ -19,7 +19,7 @@ namespace SearchAlgorithms.Core
         /// </summary>
         static void Main()
         {
-            var measurementResult = new PrimeNumbersTimeMeasure(MainFunc, 4500).UnifiedUnitMeasure();
+            var measurementResult = new PrimeNumbersTimeMeasure(4500).UnifiedUnitMeasure(MainFunc);
             Console.WriteLine($"Wykonanie zajęło {measurementResult.ResultInReferrentialUnit} jednostek pomiaru");
             Console.WriteLine($"(czyli {measurementResult.OriginalResult} milisekund)");
             Console.ReadKey();

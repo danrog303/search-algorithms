@@ -46,18 +46,19 @@ namespace SearchAlgorithms.Core.Testing.Timers
         /// </summary>
         /// <param name="functionToMeasure">Funkcja, której czas wykonania ma zostać zmierzony.</param>
         /// <param name="referentialUnit">Przelicznik jednostek referencyjnych</param>
-        public UnifiedUnitTimeMeasure(Action functionToMeasure, double referentialUnit) : base(functionToMeasure)
+        public UnifiedUnitTimeMeasure(double referentialUnit) : base()
         {
             this.ReferrentialUnit = referentialUnit;
         }
 
         /// <summary>
-        /// Wykonuje funkcję <see cref="TimeMeasure.FunctionToMeasure"/> i zwraca czas wykonania w postaci obiektu <see cref="MeasurementResult"/>.
+        /// Wykonuje funkcję <paramref name="functionToMeasure"/> i zwraca czas wykonania w postaci obiektu <see cref="MeasurementResult"/>.
         /// </summary>
+        /// <param name="functionToMeasure">Funkcja, której czas wykonania ma zostać zmierzony.</param>
         /// <returns>Wynik wykonania pomiaru czasu testowanej funkcji, reprezentowany przez obiekt klasy <see cref="MeasurementResult"/>.</returns>
-        public MeasurementResult UnifiedUnitMeasure()
+        public MeasurementResult UnifiedUnitMeasure(Action functionToMeasure)
         {
-            double resultInMs = base.Measure();
+            double resultInMs = base.Measure(functionToMeasure);
             return new MeasurementResult(resultInMs, resultInMs / ReferrentialUnit);
         }
     }

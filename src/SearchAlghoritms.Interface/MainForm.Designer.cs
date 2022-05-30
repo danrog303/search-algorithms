@@ -31,9 +31,9 @@ namespace SearchAlgorithms.Interface
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -44,6 +44,7 @@ namespace SearchAlgorithms.Interface
             this.tabPageTime = new System.Windows.Forms.TabPage();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPageIndex = new System.Windows.Forms.TabPage();
+            this.dataGridViewIndex = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -54,7 +55,6 @@ namespace SearchAlgorithms.Interface
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.errorProviderLong = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderLooking = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dataGridViewIndex = new System.Windows.Forms.DataGridView();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -62,11 +62,11 @@ namespace SearchAlgorithms.Interface
             this.tabPageTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.tabPageIndex.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIndex)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLooking)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIndex)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -76,7 +76,7 @@ namespace SearchAlgorithms.Interface
             this.toolStripButtonOpen});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1067, 27);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -86,7 +86,7 @@ namespace SearchAlgorithms.Interface
             this.toolStripButtonOpen.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOpen.Image")));
             this.toolStripButtonOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonOpen.Name = "toolStripButtonOpen";
-            this.toolStripButtonOpen.Size = new System.Drawing.Size(49, 22);
+            this.toolStripButtonOpen.Size = new System.Drawing.Size(61, 24);
             this.toolStripButtonOpen.Text = "Otwórz";
             this.toolStripButtonOpen.Click += new System.EventHandler(this.toolStripButtonOpen_Click);
             // 
@@ -99,36 +99,39 @@ namespace SearchAlgorithms.Interface
             this.tableLayoutPanel1.Controls.Add(this.tabControl, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 31);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 401);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1067, 494);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.tableLayoutPanel2.Controls.Add(this.buttonSearch, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.richTextBoxLookingString, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(252, 29);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(336, 35);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // buttonSearch
             // 
             this.buttonSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSearch.Location = new System.Drawing.Point(170, 3);
-            this.buttonSearch.MinimumSize = new System.Drawing.Size(83, 23);
+            this.buttonSearch.Location = new System.Drawing.Point(227, 4);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSearch.MinimumSize = new System.Drawing.Size(111, 28);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(83, 24);
+            this.buttonSearch.Size = new System.Drawing.Size(111, 30);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.TabStop = false;
             this.buttonSearch.Text = "Search";
@@ -138,10 +141,11 @@ namespace SearchAlgorithms.Interface
             // richTextBoxLookingString
             // 
             this.richTextBoxLookingString.Dock = System.Windows.Forms.DockStyle.Left;
-            this.richTextBoxLookingString.Location = new System.Drawing.Point(3, 3);
+            this.richTextBoxLookingString.Location = new System.Drawing.Point(4, 4);
+            this.richTextBoxLookingString.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBoxLookingString.Multiline = false;
             this.richTextBoxLookingString.Name = "richTextBoxLookingString";
-            this.richTextBoxLookingString.Size = new System.Drawing.Size(142, 24);
+            this.richTextBoxLookingString.Size = new System.Drawing.Size(188, 30);
             this.richTextBoxLookingString.TabIndex = 2;
             this.richTextBoxLookingString.Text = "";
             this.richTextBoxLookingString.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBoxLookingString_KeyUp);
@@ -150,38 +154,41 @@ namespace SearchAlgorithms.Interface
             // 
             this.tabControl.Controls.Add(this.tabPageTime);
             this.tabControl.Controls.Add(this.tabPageIndex);
-            this.tabControl.Location = new System.Drawing.Point(261, 38);
+            this.tabControl.Location = new System.Drawing.Point(348, 47);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(536, 360);
+            this.tabControl.Size = new System.Drawing.Size(715, 443);
             this.tabControl.TabIndex = 4;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPageTime
             // 
             this.tabPageTime.Controls.Add(this.chart);
-            this.tabPageTime.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTime.Location = new System.Drawing.Point(4, 25);
+            this.tabPageTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageTime.Name = "tabPageTime";
-            this.tabPageTime.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTime.Size = new System.Drawing.Size(528, 334);
+            this.tabPageTime.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageTime.Size = new System.Drawing.Size(707, 414);
             this.tabPageTime.TabIndex = 0;
             this.tabPageTime.Text = "Time";
             this.tabPageTime.UseVisualStyleBackColor = true;
             // 
             // chart
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea5);
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Name = "Legend1";
-            this.chart.Legends.Add(legend5);
-            this.chart.Location = new System.Drawing.Point(3, 3);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(4, 4);
+            this.chart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chart.Name = "chart";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chart.Series.Add(series5);
-            this.chart.Size = new System.Drawing.Size(522, 328);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart.Series.Add(series1);
+            this.chart.Size = new System.Drawing.Size(699, 406);
             this.chart.TabIndex = 3;
             this.chart.TabStop = false;
             this.chart.Text = "chart1";
@@ -189,13 +196,25 @@ namespace SearchAlgorithms.Interface
             // tabPageIndex
             // 
             this.tabPageIndex.Controls.Add(this.dataGridViewIndex);
-            this.tabPageIndex.Location = new System.Drawing.Point(4, 22);
+            this.tabPageIndex.Location = new System.Drawing.Point(4, 25);
+            this.tabPageIndex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageIndex.Name = "tabPageIndex";
-            this.tabPageIndex.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageIndex.Size = new System.Drawing.Size(528, 334);
+            this.tabPageIndex.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageIndex.Size = new System.Drawing.Size(707, 414);
             this.tabPageIndex.TabIndex = 1;
             this.tabPageIndex.Text = "Index";
             this.tabPageIndex.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewIndex
+            // 
+            this.dataGridViewIndex.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewIndex.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewIndex.Location = new System.Drawing.Point(4, 4);
+            this.dataGridViewIndex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewIndex.Name = "dataGridViewIndex";
+            this.dataGridViewIndex.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridViewIndex.Size = new System.Drawing.Size(699, 406);
+            this.dataGridViewIndex.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
@@ -204,27 +223,30 @@ namespace SearchAlgorithms.Interface
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.64179F));
             this.tableLayoutPanel3.Controls.Add(this.progressBar, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.buttonCancel, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(261, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(348, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(536, 29);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(715, 35);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // progressBar
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar.Location = new System.Drawing.Point(3, 3);
+            this.progressBar.Location = new System.Drawing.Point(4, 4);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(413, 23);
+            this.progressBar.Size = new System.Drawing.Size(552, 27);
             this.progressBar.TabIndex = 4;
             // 
             // buttonCancel
             // 
             this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonCancel.Location = new System.Drawing.Point(422, 3);
+            this.buttonCancel.Location = new System.Drawing.Point(564, 4);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(111, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(147, 27);
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -236,20 +258,22 @@ namespace SearchAlgorithms.Interface
             this.tableLayoutPanel4.Controls.Add(this.richTextBoxLongString, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBoxMarkAlgo, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 38);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 47);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.38889F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.611111F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(252, 360);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(336, 443);
             this.tableLayoutPanel4.TabIndex = 6;
             // 
             // richTextBoxLongString
             // 
             this.richTextBoxLongString.Dock = System.Windows.Forms.DockStyle.Left;
-            this.richTextBoxLongString.Location = new System.Drawing.Point(3, 3);
+            this.richTextBoxLongString.Location = new System.Drawing.Point(4, 4);
+            this.richTextBoxLongString.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBoxLongString.Name = "richTextBoxLongString";
-            this.richTextBoxLongString.Size = new System.Drawing.Size(229, 323);
+            this.richTextBoxLongString.Size = new System.Drawing.Size(304, 396);
             this.richTextBoxLongString.TabIndex = 3;
             this.richTextBoxLongString.Text = "";
             // 
@@ -257,17 +281,19 @@ namespace SearchAlgorithms.Interface
             // 
             this.textBoxMarkAlgo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxMarkAlgo.Enabled = false;
-            this.textBoxMarkAlgo.Location = new System.Drawing.Point(3, 332);
+            this.textBoxMarkAlgo.Location = new System.Drawing.Point(4, 408);
+            this.textBoxMarkAlgo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxMarkAlgo.Name = "textBoxMarkAlgo";
-            this.textBoxMarkAlgo.Size = new System.Drawing.Size(246, 20);
+            this.textBoxMarkAlgo.Size = new System.Drawing.Size(328, 22);
             this.textBoxMarkAlgo.TabIndex = 4;
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 429);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 533);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1067, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -283,25 +309,16 @@ namespace SearchAlgorithms.Interface
             // 
             this.errorProviderLooking.ContainerControl = this;
             // 
-            // dataGridViewIndex
-            // 
-            this.dataGridViewIndex.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewIndex.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewIndex.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewIndex.Name = "dataGridViewIndex";
-            this.dataGridViewIndex.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridViewIndex.Size = new System.Drawing.Size(522, 328);
-            this.dataGridViewIndex.TabIndex = 0;
-            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(800, 451);
+            this.ClientSize = new System.Drawing.Size(1067, 555);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Porównywarka Algorytmów";
             this.toolStrip1.ResumeLayout(false);
@@ -312,12 +329,12 @@ namespace SearchAlgorithms.Interface
             this.tabPageTime.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.tabPageIndex.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIndex)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLooking)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIndex)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -212,17 +212,16 @@ namespace SearchAlgorithms.Interface
             //Stopwatch sw = Stopwatch.StartNew();
             List<int> rl = null;
             ISearchAlgorithm fa = null;
-            TimeMeasure tm = new TimeMeasure(
-                () =>
-                {
-                    fa = algo();
-                    rl = fa.Search(lookingString, longString);
-                });
+            TimeMeasure tm = new TimeMeasure();
+            Action measuredAction = () => {
+                fa = algo();
+                rl = fa.Search(lookingString, longString);
+            };
 
             double swResult;
             try
             {
-                swResult = tm.Measure();
+                swResult = tm.Measure(measuredAction);
                 resultList[fa.Name()] = rl;
 
             }

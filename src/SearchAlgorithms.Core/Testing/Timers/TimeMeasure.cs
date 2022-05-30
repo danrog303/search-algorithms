@@ -9,28 +9,15 @@ namespace SearchAlgorithms.Core.Testing.Timers
     public class TimeMeasure
     {
         /// <summary>
-        /// Funkcja, której czas wykonania ma zostać zmierzony.
+        /// Wykonuje funkcję <paramref name="functionToMeasure"/> i zwraca czas wykonania w milisekundach.
         /// </summary>
-        private Action FunctionToMeasure;
-
-        /// <summary>
-        /// Tworzy nowy obiekt klasy <see cref="TimeMeasure"/>.
-        /// </summary>
-        /// <param name="functionToMeasure">Funkcja, której czas wykonania ma zostać zmierzony.</param>
-        public TimeMeasure(Action functionToMeasure)
-        {
-            this.FunctionToMeasure = functionToMeasure;
-        }
-
-        /// <summary>
-        /// Wykonuje funkcję <see cref="TimeMeasure.FunctionToMeasure"/> i zwraca czas wykonania w milisekundach.
-        /// </summary>
+        /// <param name="functionToMeasure">Funkcja, której czas wykonania ma być zbadany./param>
         /// <returns>Czas wykonania funkcji w milisekundach (obsługuje ułamki milisekund).</returns>
-        public double Measure()
+        public double Measure(Action functionToMeasure)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            FunctionToMeasure();
+            functionToMeasure();
             stopwatch.Stop();
             return stopwatch.Elapsed.TotalMilliseconds;
         }
