@@ -272,7 +272,7 @@ namespace SearchAlgorithms.Interface
                     dataGridViewIndex[0, i].Value = i+1;
                 }
 
-                int ci = 0, ri = 0;
+                int ci = 1, ri = 0;
                 foreach (var i in resultList)
                 {
                     dataGridViewIndex.Columns.Add(i.Key, i.Key);
