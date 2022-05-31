@@ -24,35 +24,32 @@ namespace SearchAlgorithms.Core.Algorithms
         {
             var result = new List<int>();
 
-            int a = lookingString.Length;
-            int b = longString.Length;
-
-            int[] lps = new int[a];
+            int[] lps = new int[lookingString.Length];
             int j = 0;
 
-            ComputeLPSArray(lookingString, a, lps);
+            ComputeLPSArray(lookingString, lps);
 
             int i = 0;
-            while (i < b)
+            while (i < longString.Length)
             {
                 if (lookingString[j] == longString[i])
                 {
                     j++;
                     i++;
                 }
-                if (j == a)
+                if (j == lookingString.Length)
                 {
                     result.Add(i - j);
                     j = lps[j - 1];
                 }
 
-                else if (i < b && lookingString[j] != longString[i])
+                else if (i < longString.Length && lookingString[j] != longString[i])
                 {
 
                     if (j != 0)
                         j = lps[j - 1];
                     else
-                        i = i + 1;
+                        i++;
                 }
             }
 
@@ -60,17 +57,17 @@ namespace SearchAlgorithms.Core.Algorithms
         }
 
         /// <summary>
-        /// TODO: FILL THIS ENTRY
+        /// Funkcja ComputeLPSArray wypelnia tablicę najdłuższego prefixo-suffixu dla podanego wzorca, biorąc pod uwagę
+        /// obliczone już elementy.
         /// </summary>
-        /// <param name="lookingString">TODO: FILL THIS ENTRY</param>
-        /// <param name="a">TODO: FILL THIS ENTRY</param>
-        /// <param name="lps">TODO: FILL THIS ENTRY</param>
-        private static void ComputeLPSArray(string lookingString, int a, int[] lps)
+        /// <param name="lookingString">Szukany wzorzec</param>
+        /// <param name="lps">Przechowuje najdłuższe wartości prefixo-suffixu</param>
+        private static void ComputeLPSArray(string lookingString, int[] lps)
         {
             int length = 0;
             int i = 1;
             lps[0] = 0;
-            while (i < a)
+            while (i < lookingString.Length)
             {
                 if (lookingString[i] == lookingString[length])
                 {
