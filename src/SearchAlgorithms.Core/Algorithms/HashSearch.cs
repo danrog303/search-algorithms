@@ -4,22 +4,22 @@ using System.Collections.Generic;
 namespace SearchAlgorithms.Core.Algorithms
 {
 	/// <summary>
-	/// Algorytm wyszukiwania pod�a�cuch�w metod� hashowania.
+	/// Algorytm wyszukiwania podłańcuchów metodą hashowania.
 	/// </summary>
 	public class HashSearch : ISearchAlgorithm
 	{
 		/// <summary>
-		/// TODO: FILL THIS ENTRY
+		/// Funkcja obliczająca długość przyszłej tablicy elementów
 		/// </summary>
-		/// <param name="lookingString">TODO: FILL THIS ENTRY</param>
-		/// <param name="longString">TODO: FILL THIS ENTRY</param>
-		/// <returns>TODO: FILL THIS ENTRY</returns>
+		/// <param name="lookingString">Szukany ciąg znaków</param>
+		/// <param name="longString">Przeszukiwany ciąg znaków</param>
+		/// <returns>Długość tablicy</returns>
 		static int Leng(string lookingString, string longString)
 		{
 			double size = 0;
 			int size2, limit, n = lookingString.Length;
 			limit = longString.Length - lookingString.Length;
-			// Ile razy pierwszy znak szukanego slowa pojawia sie w przeszukiwanym ci�gu?
+			// Ile razy pierwszy znak szukanego słowa pojawia sie w przeszukiwanym ciągu?
 			for (int i = 0; i <= limit; i++)
 			{
 				if (longString[i] == lookingString[0])
@@ -33,27 +33,27 @@ namespace SearchAlgorithms.Core.Algorithms
 		}
 
 		/// <summary>
-		/// TODO: FILL THIS ENTRY
+		/// Funkcja wprowadzająca dane do tablicy
 		/// </summary>
-		/// <param name="lookingString">TODO: FILL THIS ENTRY</param>
-		/// <param name="longString">TODO: FILL THIS ENTRY</param>
-		/// <param name="limit">TODO: FILL THIS ENTRY</param>
-		/// <param name="counter">TODO: FILL THIS ENTRY</param>
-		/// <param name="size">TODO: FILL THIS ENTRY</param>
-		/// <param name="n">TODO: FILL THIS ENTRY</param>
-		/// <param name="array">TODO: FILL THIS ENTRY</param>
-		/// <param name="arrays">TODO: FILL THIS ENTRY</param>
+		/// <param name="lookingString">Szukany ciąg znaków</param>
+		/// <param name="longString">Przeszukiwany ciąg znaków</param>
+		/// <param name="limit">Indeks ostatniego elementu przeszukiwanego ciągu, który może być początkiem szukanego słowa</param>
+		/// <param name="counter">Stopień potęgi</param>
+		/// <param name="size">Rozmiar tablic elementów</param>
+		/// <param name="n">Długość szukanego ciągu</param>
+		/// <param name="array">Tablica indeksów</param>
+		/// <param name="arrays">Tablica słów</param>
 		static void Insert(string lookingString, string longString, int limit, int counter, int size, int n, int[] array, string[] arrays)
 		{
 			for (int i = 0; i <= limit; i++)
 			{
-				// Znalezienie kandydat�w na szukane s�owo
+				// Znalezienie kandydatów na szukane słowo
 				if (longString[i] == lookingString[0])
 				{
 					string tmps = "";
 					int power = counter;
 					int utfvalue = 0;
-					// Algorytm haszuj�cy
+					// Algorytm haszujący
 					for (int j = i; j < i + n; j++)
 					{
 						tmps += longString[j];
@@ -80,19 +80,19 @@ namespace SearchAlgorithms.Core.Algorithms
 		}
 
 		/// <summary>
-		/// TODO: FILL THIS ENTRY
+		/// Funkcja przeszukująca tablicę
 		/// </summary>
-		/// <param name="counter">TODO: FILL THIS ENTRY</param>
-		/// <param name="size">TODO: FILL THIS ENTRY</param>
-		/// <param name="lookingString">TODO: FILL THIS ENTRY</param>
-		/// <param name="array">TODO: FILL THIS ENTRY</param>
-		/// <param name="arrays">TODO: FILL THIS ENTRY</param>
-		/// <returns>TODO: FILL THIS ENTRY</returns>
+		/// <param name="counter">Stopień potęgi</param>
+		/// <param name="size">Rozmiar tablic elementów</param>
+		/// <param name="lookingString">Szukany ciąg znakó</param>
+		/// <param name="array">Tablica indeksów</param>
+		/// <param name="arrays">Tablica słów</param>
+		/// <returns>Lista zawierająca indeksy przeszukiwanego ciągu, od któryych zaczynają się poszukiwane słowa</returns>
 		static List<int> Find(int counter, int size, string lookingString, int[] array, string[] arrays)
 		{
 			int power = counter;
 			int utfvalue = 0;
-			// Algorytm haszuj�cy
+			// Algorytm haszujący
 			for (int i = 0; i < lookingString.Length; i++)
 			{
 				utfvalue += ((int)lookingString[i]) ^ power;
@@ -104,9 +104,9 @@ namespace SearchAlgorithms.Core.Algorithms
 			utfvalue = utfvalue % size;
 			int tmp1 = utfvalue;
 			utfvalue--;
-			// Utworzenie listy indeksow znalezionych slow 
+			// Utworzenie listy indeksów znalezionych słów 
 			List<int> results = new List<int>();
-			// Przeszukanie tablicy haszujacej i wpisanie indeksow znalezionych slow do listy
+			// Przeszukanie tablicy haszującej i wpisanie indeksów znalezionych słów do listy
 			while (tmp1 != utfvalue && !String.IsNullOrEmpty(arrays[tmp1]))
 			{
 				if (arrays[tmp1] == lookingString)
@@ -123,19 +123,19 @@ namespace SearchAlgorithms.Core.Algorithms
 		}
 
 		/// <summary>
-		/// Implementuje metod� <see cref="ISearchAlgorithm.Search(in string, in string)"/>.
+		/// Implementuje metodę <see cref="ISearchAlgorithm.Search(in string, in string)"/>.
 		/// </summary>
 		public List<int> Search(in string lookingString, in string longString)
 		{
 			int size = Leng(lookingString, longString), n = lookingString.Length;
 			int limit = longString.Length - lookingString.Length;
-			// Utworzenie tablicy o rozmiarze wiekszym niz ilosc znalezionych kandytatow na szukane slowo
+			// Utworzenie tablicy o rozmiarze większym niz ilość znalezionych kandytatów na szukane słowo
 			int[] array = new int[size];
 			string[] arrays = new string[size];
 			int tmp = size;
 			int counter = 0;
-			// Ustalenie jak� wielokrotno�ci� setki jest wielkosc tablicy.
-			// Jest to wymagane do r�wnomiernego roz�o�enia kandydat�w na szukane slowo w tablicy.
+			// Ustalenie jaką wielokrotnością setki jest wielkość tablicy.
+			// Jest to wymagane do równomiernego rozłożenia kandydatów na szukane słowo w tablicy.
 			while (tmp > 0)
 			{
 				counter++;
@@ -147,7 +147,7 @@ namespace SearchAlgorithms.Core.Algorithms
 		}
 
 		/// <summary>
-		/// Implementuje metod� <see cref="ISearchAlgorithm.Name"/>.
+		/// Implementuje metodę <see cref="ISearchAlgorithm.Name"/>.
 		/// </summary>
 		public string Name()
 		{
