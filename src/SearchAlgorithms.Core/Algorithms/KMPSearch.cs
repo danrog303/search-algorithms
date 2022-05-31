@@ -60,11 +60,11 @@ namespace SearchAlgorithms.Core.Algorithms
         }
 
         /// <summary>
-        /// TODO: FILL THIS ENTRY
+        /// Funkcja ComputeLPSArray wypelnia tablice lps dla podanego wzorca w zaleznosci od juz obliczonych elementow.
         /// </summary>
-        /// <param name="lookingString">TODO: FILL THIS ENTRY</param>
-        /// <param name="a">TODO: FILL THIS ENTRY</param>
-        /// <param name="lps">TODO: FILL THIS ENTRY</param>
+        /// <param name="lookingString">Szukany wzorzec</param>
+        /// <param name="a">Dlugosc wzorca</param>
+        /// <param name="lps">Przechowuje najdluzsze wartosci prefxo suffixu dla wzorca</param>
         private static void ComputeLPSArray(string lookingString, int a, int[] lps)
         {
             int length = 0;
