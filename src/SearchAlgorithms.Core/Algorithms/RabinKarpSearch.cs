@@ -9,7 +9,7 @@ namespace SearchAlgorithms.Core.Algorithms
     public class RabinKarpSearch : ISearchAlgorithm
     {
         /// <summary>
-        /// TODO: FILL THIS ENTRY
+        /// Zmienna d odpowiada liczbie znaków w alfabecie wejściowym, możliwych do zapisania na jednym bajcie. (1 bajt = 8 bitów -> 2^8 = 256)
         /// </summary>
         private readonly static int d = 256;
 
@@ -31,7 +31,7 @@ namespace SearchAlgorithms.Core.Algorithms
             int i, j;
             int hashPatternValue = 0; 
             int hashTxtValue = 0; 
-            int h = 1;
+            int h = 1; // Zmienna h przechowywać będzie wartość równą "pow(d, patternLength-1)%primeNumber". Powiązane jest to ściśle z rehashowaniem, czyli wykonywaniem ponownego hashowania po uprzednim usunięciu najbardziej znaczącej cyfry dla wartości skrótu i dodaniu najmniej znaczącej. Dokładny opis działania rehashowania znajduje się w dokumentacji.
 
             for (i = 0; i < patternLength - 1; i++)
             {
