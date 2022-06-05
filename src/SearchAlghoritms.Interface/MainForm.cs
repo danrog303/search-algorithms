@@ -21,10 +21,12 @@ namespace SearchAlgorithms.Interface
 
         //private List<int> resultList;
         private bool isResultList;
+        private bool isSearching = false;
         private string lookingString;
         private string longString;
+        private string errorMessage;
         private Series series;
-        private List<Task<Tuple<string, double>>> tasksList;
+        private List<Task<Tuple<string, double, List<int>>>> tasksList;
         private Random random;
         private Title chartTitle;
         private Dictionary<string, Func<ISearchAlgorithm>> algoMap = new Dictionary<string, Func<ISearchAlgorithm>>();
@@ -69,26 +71,24 @@ namespace SearchAlgorithms.Interface
             }
         }
 
-        private void richTextBoxLookingString_KeyUp(object sender, KeyEventArgs e)
+        private async void richTextBoxLookingString_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 if (CheckRichTextBox())
                 {
-                    StartSerch();
+                    await StartSerch();
                 }
             }
         }
-        private void buttonSearch_Click(object sender, EventArgs e)
+        private async void buttonSearch_Click(object sender, EventArgs e)
         {
-
-
             buttonSearch.Enabled = false;
-            isResultList = false;
-            resultList.Clear();
             if (CheckRichTextBox())
             {
-                StartSerch();
+                isResultList = false;
+                resultList.Clear();
+                await StartSerch();
             }
             buttonSearch.Enabled = true;
         }
@@ -122,76 +122,80 @@ namespace SearchAlgorithms.Interface
         }
 
 
-        public async void StartSerch()
+        public async Task StartSerch()
         {
-
-            chart.UseWaitCursor = true;
-            isResultList = false;
-
-            richTextBoxLongString.SelectionStart = 0;
-            richTextBoxLongString.SelectionLength = richTextBoxLongString.Text.Length;
-            richTextBoxLongString.SelectionColor = Color.Black;
-
-            progressBar.Style = ProgressBarStyle.Marquee;
-
-            lookingString = richTextBoxLookingString.Text;
-            longString = richTextBoxLongString.Text;
-
-            seriesReset();
-
-            chartTitle.Text = "Trwa wyszukiwanie...";
-
-            tasksList = new List<Task<Tuple<string, double>>>();
-
-            tasksList.Add(new Task<Tuple<string, double>>(() => { return Search(algoMap["BoyerMooreSearch"]); }));
-
-            tasksList.Add(new Task<Tuple<string, double>>(() => { return Search(algoMap["BinarySerch"]); }));
-
-            tasksList.Add(new Task<Tuple<string, double>>(() => { return Search(algoMap["HashSearch"]); }));
-
-            tasksList.Add(new Task<Tuple<string, double>>(() => { return Search(algoMap["KMPSearch"]); }));
-
-            tasksList.Add(new Task<Tuple<string, double>>(() => { return Search(algoMap["RabinKarpSearch"]); }));
-
-            tasksList.Add(new Task<Tuple<string, double>>(() => { return Search(algoMap["SequenceSearch"]); }));
-
-            foreach (Task<Tuple<string, double>> i in tasksList)
+            if (!isSearching)
             {
-                i.Start();
+                isSearching = true;
+                errorMessage = "";
+                chart.UseWaitCursor = true;
+                isResultList = false;
+
+                richTextBoxLongString.SelectionStart = 0;
+                richTextBoxLongString.SelectionLength = richTextBoxLongString.Text.Length;
+                richTextBoxLongString.SelectionColor = Color.Black;
+
+                progressBar.Style = ProgressBarStyle.Marquee;
+
+                lookingString = richTextBoxLookingString.Text;
+                longString = richTextBoxLongString.Text;
+
+                seriesReset();
+
+                chartTitle.Text = "Trwa wyszukiwanie...";
+
+                tasksList = new List<Task<Tuple<string, double, List<int>>>>();
+
+                tasksList.Add(new Task<Tuple<string, double, List<int>>>(() => { return Search(algoMap["BoyerMooreSearch"]); }));
+
+                tasksList.Add(new Task<Tuple<string, double, List<int>>>(() => { return Search(algoMap["BinarySerch"]); }));
+
+                tasksList.Add(new Task<Tuple<string, double, List<int>>>(() => { return Search(algoMap["HashSearch"]); }));
+
+                tasksList.Add(new Task<Tuple<string, double, List<int>>>(() => { return Search(algoMap["KMPSearch"]); }));
+
+                tasksList.Add(new Task<Tuple<string, double, List<int>>>(() => { return Search(algoMap["RabinKarpSearch"]); }));
+
+                tasksList.Add(new Task<Tuple<string, double, List<int>>>(() => { return Search(algoMap["SequenceSearch"]); }));
+
+                foreach (Task<Tuple<string, double, List<int>>> i in tasksList)
+                {
+                    i.Start();
+
+                }
+
+
+                tabControl.SelectedIndex = 0;
+                var cpu = new ManagementObjectSearcher("select name from Win32_Processor").Get().Cast<ManagementObject>().First();
+                chartTitle.Text = cpu.GetPropertyValue("name").ToString();
+
+                while (tasksList.Count != 0)
+                {
+                    Task<Tuple<string, double, List<int>>> completeTask;
+
+
+                    completeTask = await Task<Tuple<string, double, List<int>>>.WhenAny(tasksList);
+                    var swr = completeTask.Result;
+                    tasksList.Remove(completeTask);
+                    series.Points.ElementAt(series.Points.AddXY(swr.Item1, swr.Item2)).Color = Color.FromArgb(random.Next() % 255, random.Next() % 255, random.Next() % 255);
+                    if(completeTask.Result.Item3 != null)
+                        resultList[completeTask.Result.Item1] = completeTask.Result.Item3;
+                }
+                isResultList = true;
+                Console.WriteLine(resultList.Count);
+                string s = resultList.ElementAt((random.Next() % resultList.Count)).Key;
+
+                textBoxMarkAlgo.Text = s;
+                markSubString(s);
+
+
+                chart.UseWaitCursor = false;
+                progressBar.Style = ProgressBarStyle.Blocks;
+
+                errorProviderChart.SetError(chart, errorMessage);
+                isSearching = false;
 
             }
-
-
-            tabControl.SelectedIndex = 0;
-            var cpu = new ManagementObjectSearcher("select name from Win32_Processor").Get().Cast<ManagementObject>().First();
-            chartTitle.Text = cpu.GetPropertyValue("name").ToString();
-
-            while (tasksList.Count != 0)
-            {
-                Task<Tuple<string, double>> completeTask;
-
-
-                completeTask = await Task<Tuple<string, double>>.WhenAny(tasksList);
-                var swr = completeTask.Result;
-                tasksList.Remove(completeTask);
-                series.Points.ElementAt(series.Points.AddXY(swr.Item1, swr.Item2)).Color = Color.FromArgb(random.Next() % 255, random.Next() % 255, random.Next() % 255);
-
-                //Task<Tuple<string, long>>.
-
-            }
-            isResultList = true;
-            Console.WriteLine(resultList.Count);
-            string s = resultList.ElementAt((random.Next() % resultList.Count)).Key;
-
-            textBoxMarkAlgo.Text = s;
-            markSubString(s);
-
-
-            chart.UseWaitCursor = false;
-            buttonSearch.Enabled = true;
-            progressBar.Style = ProgressBarStyle.Blocks;
-
-            buttonSearch.Enabled = true;
         }
 
         private void seriesReset()
@@ -203,13 +207,10 @@ namespace SearchAlgorithms.Interface
             series.IsVisibleInLegend = false;
             series.IsValueShownAsLabel = true;
 
-            //series.Font = new Font(series.Font.Name, series.Font.Size + 5, series.Font.Style, series.Font.Unit);
-
         }
 
-        private Tuple<string, double> Search(Func<ISearchAlgorithm> algo)
+        private Tuple<string, double, List<int>> Search(Func<ISearchAlgorithm> algo)
         {
-            //Stopwatch sw = Stopwatch.StartNew();
             List<int> rl = null;
             ISearchAlgorithm fa = null;
             TimeMeasure tm = new TimeMeasure();
@@ -222,24 +223,19 @@ namespace SearchAlgorithms.Interface
             try
             {
                 swResult = tm.Measure(measuredAction);
-                resultList[fa.Name()] = rl;
+                //resultList[fa.Name()] = rl;
 
             }
             catch (Exception ex)
             {
-
                 swResult = -1;
                 Console.WriteLine(ex.Message);
+                errorMessage = ex.Message + "\n" + errorMessage;
             }
             finally
             {
             }
-
-            //if (resultList == null)
-            //{
-            //    resultList = rl;
-            //}        
-            return new Tuple<string, double>(fa.Name(), swResult);
+            return new Tuple<string, double, List<int>>(fa.Name(), swResult, rl);
         }
 
         private void markSubString(string algoName)
@@ -283,14 +279,12 @@ namespace SearchAlgorithms.Interface
                     }
                     ci++;
                 }
-                //var dgv = new DGVTemplate();
-                //dataGridViewIndex.DataSource = dgv;
             }
         }
 
         private int GetMax(in Dictionary<string, List<int>> resultList)
         {
-            int max = -1;
+            int max = 1;
             foreach (var item in resultList)
             {
                 if (max < item.Value.Count)
