@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SearchAlgorithms.Core.Utils;
-using System;
 
 namespace SearchAlgorithms.UnitTests.Core.Utils
 {

@@ -1,6 +1,4 @@
 ﻿using SearchAlgorithms.Core.Utils;
-using System;
-using System.Collections.Generic;
 namespace SearchAlgorithms.Core.Testing.Timers
 {
     /// <summary>

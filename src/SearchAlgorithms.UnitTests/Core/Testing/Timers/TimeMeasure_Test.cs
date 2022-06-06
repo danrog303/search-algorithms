@@ -2,10 +2,6 @@
 using SearchAlgorithms.Core.Testing.Timers;
 using SearchAlgorithms.Core.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SearchAlgorithms.UnitTests.Core.Testing.Timers
 {

@@ -1,7 +1,5 @@
 ﻿using SearchAlgorithms.Core.Algorithms;
 using System;
-using System.Linq;
-using System.Reflection;
 using SearchAlgorithms.Core.Testing.Timers;
 using SearchAlgorithms.Core.Testing.Validators;
 using System.Collections.Generic;

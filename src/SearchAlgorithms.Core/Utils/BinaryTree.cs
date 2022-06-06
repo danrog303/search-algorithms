@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SearchAlgorithms.Core.Utils
+﻿namespace SearchAlgorithms.Core.Utils
 {
     /// <summary>
     /// Klasa reprezentująca pojedynczy węzeł drzewa binarnego.

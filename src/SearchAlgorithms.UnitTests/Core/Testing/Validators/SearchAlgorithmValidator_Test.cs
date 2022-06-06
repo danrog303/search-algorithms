@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SearchAlgorithms.Core.Algorithms;
 using SearchAlgorithms.Core.Testing.Validators;
-using System;
 using System.Collections.Generic;
 
 namespace SearchAlgorithms.UnitTests.Core.Testing.Validators
