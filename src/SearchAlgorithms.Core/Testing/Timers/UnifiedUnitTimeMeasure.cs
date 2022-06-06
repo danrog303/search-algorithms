@@ -48,7 +48,7 @@ namespace SearchAlgorithms.Core.Testing.Timers
         /// <param name="referentialUnit">Przelicznik jednostek referencyjnych</param>
         public UnifiedUnitTimeMeasure(double referentialUnit) : base()
         {
-            this.ReferrentialUnit = referentialUnit;
+            this.ReferrentialUnit = referentialUnit != 0 ? referentialUnit : -1;
         }
 
         /// <summary>
