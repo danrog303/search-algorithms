@@ -36,15 +36,23 @@ namespace SearchAlgorithms.Core
             foreach (ISearchAlgorithm algo in algorithms)
             {
                 Console.WriteLine($"Algorytm: {algo.Name()}");
-                SearchAlgorithmValidator validator = new SearchAlgorithmValidator(algo);
-                List<int> results = null;
-                UnifiedUnitTimeMeasure.MeasurementResult time = tm.UnifiedUnitMeasure(() => {
-                    results = algo.Search(needle, haystack);
-                });
-                Console.WriteLine($"Wynik działania: {string.Join(" ", results)}");
-                Console.WriteLine($"Wykonanie zajęło {time.ResultInReferrentialUnit} jednostek pomiaru ({time.OriginalResult} ms)");
-                Console.WriteLine($"Walidacja: {(validator.Validate(needle, haystack) ? "wynik prawidłowy\n" : "wynik nieprawidłowy\n")}");
 
+                try
+                {
+                    SearchAlgorithmValidator validator = new SearchAlgorithmValidator(algo);
+                    List<int> results = null;
+                    UnifiedUnitTimeMeasure.MeasurementResult time = tm.UnifiedUnitMeasure(() => {
+                        results = algo.Search(needle, haystack);
+                    });
+                    Console.WriteLine($"Wynik działania: {string.Join(" ", results)}");
+                    Console.WriteLine($"Wykonanie zajęło {time.ResultInReferrentialUnit} jednostek pomiaru ({time.OriginalResult} ms)");
+                    Console.WriteLine($"Walidacja: {(validator.Validate(needle, haystack) ? "wynik prawidłowy\n" : "wynik nieprawidłowy\n")}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Błąd! Nastąpił wyjątek typu {ex.GetType().Name}.");
+                    Console.WriteLine("Wyszukiwanie tym algorytmem nie może zostać dokończone.\n");
+                }
             }
 
             Console.ReadKey();

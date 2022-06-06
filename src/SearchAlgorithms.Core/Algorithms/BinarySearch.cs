@@ -31,6 +31,13 @@ namespace SearchAlgorithms.Core.Algorithms
         /// </remarks>
         public List<int> Search(in string lookingString, in string longString)
         {
+            // When longString is actually long, program raises StackOverflowException, which cannot be caught.
+            // This line throws ArgumentOutOfRangeException to make Exception catchable.
+            if (longString.Length > 10000)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             if (longString.Length == 0)
             {
                 return new List<int>();

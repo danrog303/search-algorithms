@@ -22,11 +22,20 @@ namespace SearchAlgorithms.UnitTests.Core.Algorithms
         {
             var algo = new BinarySearch();
             var correctlyWorkingAlgo = new BuiltInSearch();
-            var haystack = RandomString.GetRandomString(8000).SortCharacters();
+            var haystack = RandomString.GetRandomString(10000).SortCharacters();
             var needle = haystack[0].ToString();
             var results = algo.Search(needle, haystack); 
             var correctResults = correctlyWorkingAlgo.Search(needle, haystack);
             CollectionAssert.AreEquivalent(correctResults, results);
+        }
+
+        [TestMethod]
+        public void Search_ShouldntWorkForStringsWithLengthOverTenThousand()
+        {
+            var algo = new BinarySearch();
+            var haystack = RandomString.GetRandomString(500000).SortCharacters();
+            var needle = haystack[0].ToString();
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => algo.Search(needle, haystack));
         }
 
         [TestMethod]
