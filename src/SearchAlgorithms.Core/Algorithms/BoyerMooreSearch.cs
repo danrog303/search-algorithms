@@ -19,9 +19,9 @@ namespace SearchAlgorithms.Core.Algorithms
         /// <summary>
         /// Metoda realizująca heurystykę złego znaku.
         /// </summary>
-        /// <param name="str">TODO: FILL THIS ENTRY</param>
-        /// <param name="size">TODO: FILL THIS ENTRY</param>
-        /// <param name="badchar">TODO: FILL THIS ENTRY</param>
+        /// <param name="str">Wyraz szukany</param>
+        /// <param name="size">Długość ciągu w którym szukamy</param>
+        /// <param name="badchar">Sprawdza o ile musi przesunąć wzór</param>
         private static void BadCharHeuristic(string str, int size, int[] badchar)
         {
             int i;
